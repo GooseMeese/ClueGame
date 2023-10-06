@@ -143,19 +143,38 @@ class BoardTestsExp {
 	 * Test for targets when an interfering occupied space is involved
 	 */
 	@Test
+	// Tests for targets when the cell at (1,2) is occupied and the player rolls a 6 on the cell (1,0)
 	public void testTargetsOccupied1() {
-		TestBoardCell cell = board.getCell(0, 0);
-		board.calcTargets(cell, 3);
+		TestBoardCell cell = board.getCell(1, 0);
+		board.getCell(1, 2).setOccupied(true);
+		board.calcTargets(cell, 6);
 		Set<TestBoardCell> targets = board.getTargets();
-		Assert.assertEquals(6, targets.size());
-		Assert.assertTrue(targets.contains(board.getCell(3, 0)));
-		Assert.assertTrue(targets.contains(board.getCell(2, 1)));
 		Assert.assertTrue(targets.contains(board.getCell(0, 1)));
-		Assert.assertTrue(targets.contains(board.getCell(1, 2)));
 		Assert.assertTrue(targets.contains(board.getCell(0, 3)));
-		Assert.assertTrue(targets.contains(board.getCell(1, 0)));
+		Assert.assertTrue(targets.contains(board.getCell(2, 1)));
+		Assert.assertTrue(targets.contains(board.getCell(2, 3)));
+		Assert.assertTrue(targets.contains(board.getCell(3, 0)));
+		Assert.assertTrue(targets.contains(board.getCell(3, 2)));
+		Assert.assertEquals(6, targets.size());
 	}
 	
+	
+	// Tests for targets when the cell at (1,2) is occupied and the player rolls a 5 on the cell (2,1)
+	public void testTargetsOccupied2() {
+		TestBoardCell cell = board.getCell(2, 1);
+		board.getCell(3, 3).setOccupied(true);
+		board.calcTargets(cell, 5);
+		Set<TestBoardCell> targets = board.getTargets();
+		Assert.assertTrue(targets.contains(board.getCell(0, 0)));
+		Assert.assertTrue(targets.contains(board.getCell(0, 2)));
+		Assert.assertTrue(targets.contains(board.getCell(1, 1)));
+		Assert.assertTrue(targets.contains(board.getCell(1, 3)));
+		Assert.assertTrue(targets.contains(board.getCell(2, 0)));
+		Assert.assertTrue(targets.contains(board.getCell(2, 2)));
+		Assert.assertTrue(targets.contains(board.getCell(3, 1)));
+		Assert.assertEquals(7, targets.size());
+	}
+
 	
 	
 	
