@@ -19,7 +19,7 @@ public class TestBoardCell {
 		return null;
 	}
 	
-	public void setIsRoom(boolean cell) {
+	public void setRoom(boolean cell) {
 		return;
 	}
 	
