@@ -19,13 +19,25 @@ public class TestBoardCell {
 		return null;
 	}
 	
+	// Setter for creating a room cell
 	public void setRoom(boolean cell) {
 		return;
 	}
 	
+	// Getter for if a space is a room cell
+	public boolean getRoom(TestBoardCell cell) {
+		return true;
+	}
+	
+	
 	// Setter for indicating if a cell is occupied by another player
 	public void setOccupied(boolean cell) {
 		return;
+	}
+	
+	// Getter for indicating if a cell is occupied by another player
+	public boolean getOccupied(TestBoardCell cell) {
+		return true;
 	}
 
 	
