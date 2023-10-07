@@ -16,7 +16,8 @@ public class TestBoardCell {
 	
 	// Returns the adjacency list for the cell
 	public Set<TestBoardCell> getAdjList(){
-		return null;
+		Set<TestBoardCell> adjacencyList = new HashSet<>();
+		return adjacencyList;
 	}
 	
 	// Setter for creating a room cell
