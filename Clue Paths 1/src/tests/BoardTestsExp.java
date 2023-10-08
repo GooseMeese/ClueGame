@@ -23,6 +23,10 @@ class BoardTestsExp {
 	@Test
 	public void testAdjacency1() {
 		TestBoardCell cell = board.getCell(0, 0);
+		if (cell == null) {
+			Assert.assertEquals(0, 1);
+			return;
+		}
 		Set<TestBoardCell> testList = cell.getAdjList();
 		Assert.assertTrue(testList.contains(board.getCell(1, 0)));
 		Assert.assertTrue(testList.contains(board.getCell(0, 1)));
@@ -34,6 +38,10 @@ class BoardTestsExp {
 	@Test
 	public void testAdjacency2() {
 		TestBoardCell cell = board.getCell(3, 3);
+		if (cell == null) {
+			Assert.assertEquals(0, 1);
+			return;
+		}
 		Set<TestBoardCell> testList = cell.getAdjList();
 		Assert.assertTrue(testList.contains(board.getCell(3, 2)));
 		Assert.assertTrue(testList.contains(board.getCell(2, 3)));
@@ -45,6 +53,10 @@ class BoardTestsExp {
 	@Test
 	public void testAdjacency3() {
 		TestBoardCell cell = board.getCell(1, 1);
+		if (cell == null) {
+			Assert.assertEquals(0, 1);
+			return;
+		}
 		Set<TestBoardCell> testList = cell.getAdjList();
 		Assert.assertTrue(testList.contains(board.getCell(0, 1)));
 		Assert.assertTrue(testList.contains(board.getCell(1, 0)));
@@ -58,6 +70,10 @@ class BoardTestsExp {
 	@Test
 	public void testAdjacency4() {
 		TestBoardCell cell = board.getCell(1, 3);
+		if (cell == null) {
+			Assert.assertEquals(0, 1);
+			return;
+		}
 		Set<TestBoardCell> testList = cell.getAdjList();
 		Assert.assertTrue(testList.contains(board.getCell(0, 3)));
 		Assert.assertTrue(testList.contains(board.getCell(1, 2)));
@@ -70,6 +86,10 @@ class BoardTestsExp {
 	@Test
 	public void testAdjacency5() {
 		TestBoardCell cell = board.getCell(2, 0);
+		if (cell == null) {
+			Assert.assertEquals(0, 1);
+			return;
+		}
 		Set<TestBoardCell> testList = cell.getAdjList();
 		Assert.assertTrue(testList.contains(board.getCell(1, 0)));
 		Assert.assertTrue(testList.contains(board.getCell(2, 1)));
@@ -223,6 +243,10 @@ class BoardTestsExp {
 	// Tests for targets with a room at (0,2), a roll of 2, and a starting position at (0,0)
 	public void testTargetsRoom1() {
 		TestBoardCell cell = board.getCell(0, 0);
+		if (cell == null) {
+			Assert.assertEquals(0, 1);
+			return;
+		}
 		board.getCell(0, 2).setRoom(true);
 		board.calcTargets(cell, 2);
 		Set<TestBoardCell> targets = board.getTargets();
@@ -231,10 +255,14 @@ class BoardTestsExp {
 		Assert.assertEquals(2, targets.size());
 	}
 	
-	
+	@Test
 	// Tests for targets with a room at (1,0), a roll of 3, and a starting position at (2,2)
 	public void testTargetsRoom2() {
 		TestBoardCell cell = board.getCell(2, 2);
+		if (cell == null) {
+			Assert.assertEquals(0, 1);
+			return;
+		}
 		board.getCell(1, 0).setRoom(true);
 		board.calcTargets(cell, 3);
 		Set<TestBoardCell> targets = board.getTargets();
@@ -259,6 +287,10 @@ class BoardTestsExp {
 	// Tests for targets when the cell at (1,2) is occupied and the player rolls a 6 on the cell (1,0)
 	public void testTargetsOccupied1() {
 		TestBoardCell cell = board.getCell(1, 0);
+		if (cell == null) {
+			Assert.assertEquals(0, 1);
+			return;
+		}
 		board.getCell(1, 2).setOccupied(true);
 		board.calcTargets(cell, 6);
 		Set<TestBoardCell> targets = board.getTargets();
@@ -271,10 +303,14 @@ class BoardTestsExp {
 		Assert.assertEquals(6, targets.size());
 	}
 	
-	
+	@Test
 	// Tests for targets when the cell at (3,3) is occupied and the player rolls a 5 on the cell (2,1)
 	public void testTargetsOccupied2() {
 		TestBoardCell cell = board.getCell(2, 1);
+		if (cell == null) {
+			Assert.assertEquals(0, 1);
+			return;
+		}
 		board.getCell(3, 3).setOccupied(true);
 		board.calcTargets(cell, 5);
 		Set<TestBoardCell> targets = board.getTargets();
@@ -299,6 +335,10 @@ class BoardTestsExp {
 	// Tests for targets when there is a room at (2,0), another player at (0,2), a dice roll of 2, and a starting location of (0,0)
 	public void testTargetsMixed1() {
 		TestBoardCell cell = board.getCell(0, 0);
+		if (cell == null) {
+			Assert.assertEquals(0, 1);
+			return;
+		}
 		board.getCell(0, 2).setOccupied(true);
 		board.getCell(2, 0).setRoom(true);
 		board.calcTargets(cell, 2);
@@ -308,10 +348,14 @@ class BoardTestsExp {
 	}
 	
 	
-	
+	@Test
 	// Tests for targets when there is a room at (2,1), another player at (1,2), a dice roll of 1, and a starting location of (2,2)
 	public void testTargetsMixed2() {
 		TestBoardCell cell = board.getCell(2, 2);
+		if (cell == null) {
+			Assert.assertEquals(0, 1);
+			return;
+		}
 		board.getCell(1, 2).setOccupied(true);
 		board.getCell(2, 1).setRoom(true);
 		board.calcTargets(cell, 3);
