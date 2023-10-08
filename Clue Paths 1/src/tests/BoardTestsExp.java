@@ -293,11 +293,35 @@ class BoardTestsExp {
 	
 	
 	/*
-	 * Test a situation where they may be a cell occupied by a room and another that is occupied by an opponent
+	 * Test a situation where there may be a cell occupied by a room and another that is occupied by an opponent
 	 */
 	@Test
+	// Tests for targets when there is a room at (2,0), another player at (0,2), a dice roll of 2, and a starting location of (0,0)
 	public void testTargetsMixed1() {
+		TestBoardCell cell = board.getCell(0, 0);
+		board.getCell(0, 2).setOccupied(true);
+		board.getCell(2, 0).setRoom(true);
+		board.calcTargets(cell, 2);
+		Set<TestBoardCell> targets = board.getTargets();
+		Assert.assertTrue(targets.contains(board.getCell(1, 1)));
+		Assert.assertEquals(1, targets.size());
 	}
+	
+	
+	
+	// Tests for targets when there is a room at (2,1), another player at (1,2), a dice roll of 1, and a starting location of (2,2)
+	public void testTargetsMixed2() {
+		TestBoardCell cell = board.getCell(2, 2);
+		board.getCell(1, 2).setOccupied(true);
+		board.getCell(2, 1).setRoom(true);
+		board.calcTargets(cell, 3);
+		Set<TestBoardCell> targets = board.getTargets();
+		Assert.assertTrue(targets.contains(board.getCell(2, 3)));
+		Assert.assertTrue(targets.contains(board.getCell(3, 2)));
+		Assert.assertEquals(2, targets.size());
+	}
+
+	
 
 }
 
