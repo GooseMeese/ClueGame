@@ -1,3 +1,7 @@
+I Michael Hargraves certify that i participated equitably in the creation of assignment C13A-2 Clue paths 1 dated 10/7/2023
+I Alex Hansen certify that i participated equitably in the creation of assignment C13A-2 Clue paths 1 dated 10/7/2023
+
+
 commit 31e9fdc0363d67becea0b4f27b21f467a7c03d7a
 Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
 Date:   Sat Oct 7 21:44:00 2023 -0600
