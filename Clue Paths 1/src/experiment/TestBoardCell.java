@@ -3,6 +3,10 @@ package experiment;
 import java.util.*;
 
 public class TestBoardCell {
+	private int row, col;
+	private Boolean isRoom, isOccupied;
+	Set<TestBoardCell> adjList;
+	
 	
 	// Constructor with row and col inputs
 	public TestBoardCell(int row, int col) {
@@ -26,7 +30,7 @@ public class TestBoardCell {
 	}
 	
 	// Getter for if a space is a room cell
-	public boolean getRoom(TestBoardCell cell) {
+	public boolean getRoom() {
 		return true;
 	}
 	
@@ -37,7 +41,7 @@ public class TestBoardCell {
 	}
 	
 	// Getter for indicating if a cell is occupied by another player
-	public boolean getOccupied(TestBoardCell cell) {
+	public boolean getOccupied() {
 		return true;
 	}
 

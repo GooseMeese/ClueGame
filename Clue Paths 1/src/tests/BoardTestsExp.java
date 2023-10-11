@@ -108,130 +108,127 @@ class BoardTestsExp {
 	//tests targets for a roll of 1
 	public void testTargetsNormal1() {
 		TestBoardCell cell = board.getCell(0, 0);
-		Set<TestBoardCell> targets = board.getTargets();
-		board.calcTargets(cell, 1);
-		if (targets == null) {
+		if (cell == null) {
 			Assert.assertEquals(0, 1);
 			return;
 		}
-		Assert.assertEquals(2, targets.size());
+		board.calcTargets(cell, 1);
+		Set<TestBoardCell> targets = board.getTargets();
 		Assert.assertTrue(targets.contains(board.getCell(0, 1)));
 		Assert.assertTrue(targets.contains(board.getCell(1, 0)));
+		Assert.assertEquals(2, targets.size());
 	}
+	
 	@Test
 	public void testTargetsNormal2() {
 		TestBoardCell cell = board.getCell(0, 0);
-		Set<TestBoardCell> targets = board.getTargets();
-		board.calcTargets(cell, 2);
-		if (targets == null) {
+		if (cell == null) {
 			Assert.assertEquals(0, 1);
 			return;
 		}
-		Assert.assertEquals(3, targets.size());
+		Set<TestBoardCell> targets = board.getTargets();
+		board.calcTargets(cell, 2);
 		Assert.assertTrue(targets.contains(board.getCell(0, 2)));
 		Assert.assertTrue(targets.contains(board.getCell(2, 0)));
 		Assert.assertTrue(targets.contains(board.getCell(1, 1)));
+		Assert.assertEquals(3, targets.size());
 	}
 	
 	@Test
 	public void testTargetsNormal3() {
 		TestBoardCell cell = board.getCell(0, 0);
-		Set<TestBoardCell> targets = board.getTargets();
-		board.calcTargets(cell, 3);
-		if (targets == null) {
+		
+		if (cell == null) {
 			Assert.assertEquals(0, 1);
 			return;
 		}
-		Assert.assertEquals(6, targets.size());
+		Set<TestBoardCell> targets = board.getTargets();
+		board.calcTargets(cell, 3);
 		Assert.assertTrue(targets.contains(board.getCell(0, 3)));
 		Assert.assertTrue(targets.contains(board.getCell(3, 0)));
 		Assert.assertTrue(targets.contains(board.getCell(2, 1)));
 		Assert.assertTrue(targets.contains(board.getCell(1, 2)));
 		Assert.assertTrue(targets.contains(board.getCell(0, 1)));
 		Assert.assertTrue(targets.contains(board.getCell(1, 0)));
+		Assert.assertEquals(6, targets.size());
 	}
+	
+
 	@Test
 	public void testTargetsNormal4() {
 		TestBoardCell cell = board.getCell(0, 0);
+		
+		if (cell == null) {
+			Assert.assertEquals(0, 1);
+			return;
+		}
 		Set<TestBoardCell> targets = board.getTargets();
 		board.calcTargets(cell, 4);
-		if (targets == null) {
-			Assert.assertEquals(0, 1);
-			return;
-		}
-		Assert.assertEquals(8, targets.size());
 		Assert.assertTrue(targets.contains(board.getCell(0, 2)));
-		Assert.assertTrue(targets.contains(board.getCell(2, 0)));
-		Assert.assertTrue(targets.contains(board.getCell(4, 0)));
-		Assert.assertTrue(targets.contains(board.getCell(0, 4)));
-		Assert.assertTrue(targets.contains(board.getCell(1, 3)));
 		Assert.assertTrue(targets.contains(board.getCell(1, 1)));
+		Assert.assertTrue(targets.contains(board.getCell(1, 3)));
+		Assert.assertTrue(targets.contains(board.getCell(2, 0)));
+		Assert.assertTrue(targets.contains(board.getCell(2, 2)));
 		Assert.assertTrue(targets.contains(board.getCell(3, 1)));
-		Assert.assertTrue(targets.contains(board.getCell(2, 2)));	
+		Assert.assertEquals(6, targets.size());
 	}
+	
 	@Test
 	public void testTargetsNormal5() {
-		TestBoardCell cell = board.getCell(0, 0);
-		Set<TestBoardCell> targets = board.getTargets();
-		board.calcTargets(cell, 5);
-		if (targets == null) {
+		TestBoardCell cell = board.getCell(2, 2);
+		if (cell == null) {
 			Assert.assertEquals(0, 1);
 			return;
 		}
-		Assert.assertEquals(12, targets.size());
-		Assert.assertTrue(targets.contains(board.getCell(0, 3)));
-		Assert.assertTrue(targets.contains(board.getCell(3, 0)));
-		Assert.assertTrue(targets.contains(board.getCell(5, 0)));
-		Assert.assertTrue(targets.contains(board.getCell(0, 5)));
+		Set<TestBoardCell> targets = board.getTargets();
+		board.calcTargets(cell, 5);
 		Assert.assertTrue(targets.contains(board.getCell(0, 1)));
-		Assert.assertTrue(targets.contains(board.getCell(1, 0)));	
-		Assert.assertTrue(targets.contains(board.getCell(1, 4)));
+		Assert.assertTrue(targets.contains(board.getCell(0, 3)));
+		Assert.assertTrue(targets.contains(board.getCell(1, 0)));
 		Assert.assertTrue(targets.contains(board.getCell(1, 2)));
-		Assert.assertTrue(targets.contains(board.getCell(2, 1)));	
-		Assert.assertTrue(targets.contains(board.getCell(4, 1)));
-		Assert.assertTrue(targets.contains(board.getCell(3, 2)));	
+		Assert.assertTrue(targets.contains(board.getCell(2, 1)));
 		Assert.assertTrue(targets.contains(board.getCell(2, 3)));	
+		Assert.assertTrue(targets.contains(board.getCell(3, 0)));
+		Assert.assertTrue(targets.contains(board.getCell(3, 2)));
+		Assert.assertEquals(8, targets.size());
 	}
 	
 	@Test
 	public void testTargetsNormal6() {
-		TestBoardCell cell = board.getCell(0, 0);
-		Set<TestBoardCell> targets = board.getTargets();
-		board.calcTargets(cell, 6);
-		if (targets == null) {
+		TestBoardCell cell = board.getCell(3, 3);
+		if (cell == null) {
 			Assert.assertEquals(0, 1);
 			return;
 		}
-		Assert.assertEquals(15, targets.size());
+		Set<TestBoardCell> targets = board.getTargets();
+		board.calcTargets(cell, 6);
+		Assert.assertTrue(targets.contains(board.getCell(0, 0)));
 		Assert.assertTrue(targets.contains(board.getCell(0, 2)));
-		Assert.assertTrue(targets.contains(board.getCell(2, 0)));
-		Assert.assertTrue(targets.contains(board.getCell(4, 0)));
-		Assert.assertTrue(targets.contains(board.getCell(0, 4)));
-		Assert.assertTrue(targets.contains(board.getCell(6, 0)));
-		Assert.assertTrue(targets.contains(board.getCell(0, 6)));
-		Assert.assertTrue(targets.contains(board.getCell(1, 3)));
 		Assert.assertTrue(targets.contains(board.getCell(1, 1)));
-		Assert.assertTrue(targets.contains(board.getCell(3, 1)));
-		Assert.assertTrue(targets.contains(board.getCell(1, 5)));
-		Assert.assertTrue(targets.contains(board.getCell(5, 1)));
+		Assert.assertTrue(targets.contains(board.getCell(1, 3)));
+		Assert.assertTrue(targets.contains(board.getCell(2, 0)));
 		Assert.assertTrue(targets.contains(board.getCell(2, 2)));
-		Assert.assertTrue(targets.contains(board.getCell(4, 2)));
-		Assert.assertTrue(targets.contains(board.getCell(2, 4)));
-		Assert.assertTrue(targets.contains(board.getCell(3, 3)));
+		Assert.assertTrue(targets.contains(board.getCell(3, 1)));
+		Assert.assertEquals(7, targets.size());
 	}
 	
 	@Test
 	public void testTargetsNormal7() {
-		TestBoardCell cell = board.getCell(0, 20);
-		Set<TestBoardCell> targets = board.getTargets();
-		board.calcTargets(cell, 1);
-		if (targets == null) {
+		TestBoardCell cell = board.getCell(2, 1);
+		
+		if (cell == null) {
 			Assert.assertEquals(0, 1);
 			return;
 		}
-		Assert.assertEquals(2, targets.size());
-		Assert.assertTrue(targets.contains(board.getCell(0, 19)));
-		Assert.assertTrue(targets.contains(board.getCell(1, 20)));
+		Set<TestBoardCell> targets = board.getTargets();
+		board.calcTargets(cell, 2);
+		Assert.assertTrue(targets.contains(board.getCell(0, 1)));
+		Assert.assertTrue(targets.contains(board.getCell(1, 0)));
+		Assert.assertTrue(targets.contains(board.getCell(1, 2)));
+		Assert.assertTrue(targets.contains(board.getCell(2, 3)));
+		Assert.assertTrue(targets.contains(board.getCell(3, 0)));
+		Assert.assertTrue(targets.contains(board.getCell(3, 2)));
+		Assert.assertEquals(6, targets.size());
 	}
 	
 	
