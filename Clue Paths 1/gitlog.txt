@@ -1,6 +1,41 @@
-I Michael Hargraves certify that i participated equitably in the creation of assignment C13A-2 Clue paths 1 dated 10/7/2023
-I Alex Hansen certify that i participated equitably in the creation of assignment C13A-2 Clue paths 1 dated 10/7/2023
+I, Alexander Hansen, certify that I participated equitably in the creation of assignment C14A-1 Clue Paths 2, dated 2023.
+I, Michael Hargraves, certify that I participated equitably in the creation of this assignment C14A-1 Clue Paths 2, dated 2023.
 
+commit fc95b300f0d1af95b4d26767a7ee21975a6eaf71
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 21:32:29 2023 -0600
+
+    Finished calcTargets and passed all tests
+
+commit bb1988dda48cacef2ef757cff2aea772ad272b71
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 21:17:38 2023 -0600
+
+    passed all tests except for Mixed and Room tests
+
+commit 1f02422cba091c345cdeeb24ab3e0b6756219c93
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 20:18:49 2023 -0600
+
+    updates to multiple methods to help with test cases
+
+commit e196f8708b9c2e50d2a353fa1d977cbea36df2a6
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 19:59:58 2023 -0600
+
+    fixed tests and added calcTargets method
+
+commit df64bc59e441148e55f948cd2912ed89a01469a1
+Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
+Date:   Tue Oct 10 16:10:19 2023 -0600
+
+    added gitlog
+
+commit 27a032e5026effeb6186cda6fbcaa998d38f8040
+Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
+Date:   Sat Oct 7 21:47:47 2023 -0600
+
+    added gitlog
 
 commit 31e9fdc0363d67becea0b4f27b21f467a7c03d7a
 Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
