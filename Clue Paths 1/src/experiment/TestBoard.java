@@ -1,5 +1,4 @@
 package experiment;
-
 import java.util.*;
 
 public class TestBoard {
@@ -9,12 +8,39 @@ public class TestBoard {
 	final static int COLS = 4;
 	final static int ROWS = 4;
 	
-	// Empty constructor
 	public TestBoard() {
         super();
         grid = new TestBoardCell[ROWS][COLS];
-        targets = new HashSet<>();
-        visited = new HashSet<>();
+        
+        // Initialize cells
+        for(int i = 0;i < COLS ;i++) {
+			for(int j = 0;j < ROWS;j++) {
+				grid[i][j] = new TestBoardCell(i, j);
+				grid[i][j].setOccupied(false);
+				grid[i][j].setRoom(false);
+			}
+		}
+        
+        // Initialize adjacent cells
+		for(int i = 0;i < COLS;i++) {
+			for(int j = 0;j<ROWS;j++) {
+				if (i > 0){
+					grid[i][j].addAdjacency(grid[i-1][j]);
+				}
+				if (j > 0){
+					grid[i][j].addAdjacency(grid[i][j-1]);
+				}
+				if (i < COLS - 1){
+					grid[i][j].addAdjacency(grid[i+1][j]);
+				}
+				if (j < ROWS - 1){
+					grid[i][j].addAdjacency(grid[i][j+1]);
+				}
+			}
+		}
+        
+        targets = new HashSet<TestBoardCell>();
+        visited = new HashSet<TestBoardCell>();
     }
 	
 	// Calculates targets for a move from startCell of length pathlength.
@@ -45,16 +71,13 @@ public class TestBoard {
 	
 	// Returns the cell from the board at row, col
 	public TestBoardCell getCell(int row, int col) {
-	    if (row >= 0 && row < ROWS && col >= 0 && col < COLS) {
-	        return grid[row][col];
-	    }
-	    return null;
+	    return grid[row][col];
 	}
 
 	
 	// Gets the targets last created by calcTargets()
 	public Set<TestBoardCell> getTargets(){
-		return null;
+		return targets;
 	}
 	
 	

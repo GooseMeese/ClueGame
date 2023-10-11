@@ -1,5 +1,4 @@
 package experiment;
-
 import java.util.*;
 
 public class TestBoardCell {
@@ -13,26 +12,23 @@ public class TestBoardCell {
 	    super();
 	    this.row = row;
 	    this.col = col;
-	    this.isRoom = false;
-	    this.isOccupied = false;
-	    this.adjList = new HashSet<>();
+	    adjList = new HashSet<TestBoardCell>();
 	}
 
 	
 	// Adds an adjacent cell to this cells adjacency list
 	public void addAdjacency(TestBoardCell cell) {
-	    adjList.add(cell);
+	    this.adjList.add(cell);
 	}
 
 	// Returns the adjacency list for the cell
 	public Set<TestBoardCell> getAdjList(){
-		Set<TestBoardCell> adjacencyList = new HashSet<>();
-		return adjacencyList;
+		return adjList;
 	}
 	
 	// Setter for creating a room cell
 	public void setRoom(boolean cell) {
-		return;
+		this.isRoom = cell;;
 	}
 	
 	// Getter for if a space is a room cell
@@ -43,7 +39,7 @@ public class TestBoardCell {
 	
 	// Setter for indicating if a cell is occupied by another player
 	public void setOccupied(boolean cell) {
-		return;
+		this.isOccupied = cell;;
 	}
 	
 	// Getter for indicating if a cell is occupied by another player
