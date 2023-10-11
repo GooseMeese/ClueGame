@@ -43,7 +43,7 @@ public class Board {
 
 	
 	public Room getRoom(char c) {
-	    return roomMap.get(c);
+	    return new Room("Blank");
 	}
 
 	
