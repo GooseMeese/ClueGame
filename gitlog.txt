@@ -1,3 +1,42 @@
+commit e7603cbdc066d4933724efbbc17cb758efd2fe8d
+Merge: 2543c4a ceebb7c
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 22:59:09 2023 -0600
+
+    Merge branch 'main' of https://github.com/GooseMeese/ClueRepo
+
+commit 2543c4abf6d40f18394a63a554318e4eda96fed1
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 22:59:02 2023 -0600
+
+    Updated Board and Room class
+
+commit ceebb7ca250a555e419c29f21c099276e9e13a91
+Merge: 462b86a 8e5b0bd
+Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
+Date:   Tue Oct 10 22:57:19 2023 -0600
+
+    Merge branch 'main' of https://github.com/GooseMeese/ClueRepo
+
+commit 462b86ad4931c4c3726403033d4277318debd1f7
+Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
+Date:   Tue Oct 10 22:57:04 2023 -0600
+
+    added door direction fileinittests took newline out of setup and updated gitlog
+
+commit 8e5b0bd3e49dc192a038251fb8c3b43970e08c32
+Merge: 8c54b6d fed6a5b
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 22:32:33 2023 -0600
+
+    Merge branch 'main' of https://github.com/GooseMeese/ClueRepo
+
+commit 8c54b6d1851c2fee7ac55a1bcf6c467f402ee0cb
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 22:32:21 2023 -0600
+
+    Fixed Board and room skeletons
+
 commit fed6a5bbad6b4ccea18a42eb67c8bfd933479338
 Merge: 40df440 1c30de6
 Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
