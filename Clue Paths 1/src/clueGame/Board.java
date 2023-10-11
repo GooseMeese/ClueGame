@@ -32,12 +32,44 @@ public class Board {
 		// Empty
 	}
 
+	
 	public void loadSetupConfig(){
 		// Empty
 	}
 
+	
 	public void loadLayoutConfig(){
 		// Empty
+	}
+
+	
+	public Room getRoom(char c) {
+	    return roomMap.get(c);
+	}
+
+	
+	public void getNumRows() {
+		// TODO Auto-generated method stub
+		return;
+	}
+
+	
+	
+	public void getNumColumns() {
+		// TODO Auto-generated method stub
+		return;
+	}
+
+	
+	
+	public BoardCell getCell(int i, int j) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setConfigFiles(String string, String string2) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
