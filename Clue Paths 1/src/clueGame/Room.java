@@ -9,4 +9,13 @@ public class Room {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Object getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
 }
