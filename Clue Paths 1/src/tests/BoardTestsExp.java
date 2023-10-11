@@ -248,9 +248,10 @@ class BoardTestsExp {
 		board.getCell(0, 2).setRoom(true);
 		board.calcTargets(cell, 2);
 		Set<TestBoardCell> targets = board.getTargets();
+		Assert.assertTrue(targets.contains(board.getCell(0, 2)));
 		Assert.assertTrue(targets.contains(board.getCell(1, 1)));
 		Assert.assertTrue(targets.contains(board.getCell(2, 0)));
-		Assert.assertEquals(2, targets.size());
+		Assert.assertEquals(3, targets.size());
 	}
 	
 	@Test
@@ -266,12 +267,13 @@ class BoardTestsExp {
 		Set<TestBoardCell> targets = board.getTargets();
 		Assert.assertTrue(targets.contains(board.getCell(0, 1)));
 		Assert.assertTrue(targets.contains(board.getCell(0, 3)));
+		Assert.assertTrue(targets.contains(board.getCell(1, 0)));
 		Assert.assertTrue(targets.contains(board.getCell(1, 2)));
 		Assert.assertTrue(targets.contains(board.getCell(2, 1)));
 		Assert.assertTrue(targets.contains(board.getCell(2, 3)));
 		Assert.assertTrue(targets.contains(board.getCell(3, 0)));
 		Assert.assertTrue(targets.contains(board.getCell(3, 2)));
-		Assert.assertEquals(7, targets.size());
+		Assert.assertEquals(8, targets.size());
 	}
 	
 	
@@ -342,7 +344,8 @@ class BoardTestsExp {
 		board.calcTargets(cell, 2);
 		Set<TestBoardCell> targets = board.getTargets();
 		Assert.assertTrue(targets.contains(board.getCell(1, 1)));
-		Assert.assertEquals(1, targets.size());
+		Assert.assertTrue(targets.contains(board.getCell(2, 0)));
+		Assert.assertEquals(2, targets.size());
 	}
 	
 	
@@ -356,11 +359,12 @@ class BoardTestsExp {
 		}
 		board.getCell(1, 2).setOccupied(true);
 		board.getCell(2, 1).setRoom(true);
-		board.calcTargets(cell, 3);
+		board.calcTargets(cell, 1);
 		Set<TestBoardCell> targets = board.getTargets();
+		Assert.assertTrue(targets.contains(board.getCell(2, 1)));
 		Assert.assertTrue(targets.contains(board.getCell(2, 3)));
 		Assert.assertTrue(targets.contains(board.getCell(3, 2)));
-		Assert.assertEquals(2, targets.size());
+		Assert.assertEquals(3, targets.size());
 	}
 
 	

@@ -45,8 +45,8 @@ public class TestBoard {
 	
 	// Calculates targets for a move from startCell of length pathlength.
 	public void calcTargets(TestBoardCell startCell, int pathlength) {
-		visited.clear();
 		targets.clear();
+		visited.clear();
 		visited.add(startCell);
 		this.findAllTargets(startCell, pathlength);
 	}
@@ -57,13 +57,14 @@ public class TestBoard {
 			if(visited.contains(adj) || adj.getOccupied()){
 				continue;
 			}
+			
 			visited.add(adj);
 			if (pathlength == 1||adj.getRoom()){
 				targets.add(adj);
-			}
-			else {
+			} else {
 				this.findAllTargets(adj, pathlength - 1);
 			}
+			
 			visited.remove(adj);
 		}
 	} 
