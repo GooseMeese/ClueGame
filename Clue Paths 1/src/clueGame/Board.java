@@ -3,10 +3,8 @@ import java.util.*;
 
 public class Board {
 	private BoardCell[][] grid;
-	private int numRows;
-	private int numColumns;
-	private String layoutConfigFile;
-	private String setupConfigFile;
+	private int numRows, numColumns;
+	private String layoutConfigFile, setupConfigFile;
 	private Map<Character, Room> roomMap;
 
 	/*
@@ -17,6 +15,7 @@ public class Board {
 	// constructor is private to ensure only one can be created
 	private Board() {
 		super() ;
+		roomMap = new HashMap<Character, Room>();
 	}
 
 	// this method returns the only Board
@@ -48,16 +47,21 @@ public class Board {
 	}
 
 	
-	public void getNumRows() {
+	public Room getRoom(BoardCell cell) {
 		// TODO Auto-generated method stub
-		return;
+		return null;
+	}
+	
+	public int getNumRows() {
+		// TODO Auto-generated method stub
+		return numColumns;
 	}
 
 	
 	
-	public void getNumColumns() {
+	public int getNumColumns() {
 		// TODO Auto-generated method stub
-		return;
+		return numColumns;
 	}
 
 	
@@ -71,6 +75,8 @@ public class Board {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 
 }
