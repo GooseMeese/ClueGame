@@ -1,0 +1,183 @@
+commit fed6a5bbad6b4ccea18a42eb67c8bfd933479338
+Merge: 40df440 1c30de6
+Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
+Date:   Tue Oct 10 22:25:35 2023 -0600
+
+    Merge branch 'main' of https://github.com/GooseMeese/ClueRepo
+
+commit 40df44005657159c0005267e456d7700bbe77645
+Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
+Date:   Tue Oct 10 22:24:35 2023 -0600
+
+    added DoorDirection and BoardCell code
+
+commit 1c30de6872a8abeaaaf03b2edee3ac6c1aa47f15
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 22:15:07 2023 -0600
+
+    fixed board class
+
+commit 96c0093aeeb48a72c2c4bb29c7d92d108f525aa0
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 22:10:36 2023 -0600
+
+    Finished room class skeleton
+
+commit 0f8b07dfa5cba1d69a5973744b849128200f9bbd
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 22:09:33 2023 -0600
+
+    Finished Board class skeleton
+
+commit 4943c3788f45a65d23c2d429e15d1ebb0d80b430
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 22:02:57 2023 -0600
+
+    created the skeleton classes for clue init 1
+
+commit db50cbc447b448b62e223d7256cf50475b5b2b3d
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 21:49:54 2023 -0600
+
+    Revert "moved some things around in the folder"
+    
+    This reverts commit a01ebbbdc086b9ce39733bec3c09fa573d1f2a7a.
+
+commit a01ebbbdc086b9ce39733bec3c09fa573d1f2a7a
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 21:49:18 2023 -0600
+
+    moved some things around in the folder
+
+commit a9dd10f7eb9ef1d1d5dd11d45772cad2d140635c
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 21:44:39 2023 -0600
+
+    finished clue paths assignment and added git log
+
+commit fc95b300f0d1af95b4d26767a7ee21975a6eaf71
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 21:32:29 2023 -0600
+
+    Finished calcTargets and passed all tests
+
+commit bb1988dda48cacef2ef757cff2aea772ad272b71
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 21:17:38 2023 -0600
+
+    passed all tests except for Mixed and Room tests
+
+commit 1f02422cba091c345cdeeb24ab3e0b6756219c93
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 20:18:49 2023 -0600
+
+    updates to multiple methods to help with test cases
+
+commit e196f8708b9c2e50d2a353fa1d977cbea36df2a6
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Tue Oct 10 19:59:58 2023 -0600
+
+    fixed tests and added calcTargets method
+
+commit df64bc59e441148e55f948cd2912ed89a01469a1
+Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
+Date:   Tue Oct 10 16:10:19 2023 -0600
+
+    added gitlog
+
+commit 27a032e5026effeb6186cda6fbcaa998d38f8040
+Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
+Date:   Sat Oct 7 21:47:47 2023 -0600
+
+    added gitlog
+
+commit 31e9fdc0363d67becea0b4f27b21f467a7c03d7a
+Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
+Date:   Sat Oct 7 21:44:00 2023 -0600
+
+    debugged all tests so they fail instead of error and made sure they all ran
+
+commit 928b4f5aec8165ed82b77519298db1053597fe7f
+Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
+Date:   Sat Oct 7 21:31:51 2023 -0600
+
+    added testargetnormal
+
+commit fcdb3bfa8958181b1fda349fbfef4104f43d625f
+Merge: b78625f 5a97143
+Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
+Date:   Sat Oct 7 21:30:22 2023 -0600
+
+    Merge branch 'main' of https://github.com/GooseMeese/ClueRepo
+
+commit b78625f6eba66bc154d6316c6c7ccbe36d46c414
+Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
+Date:   Sat Oct 7 21:29:13 2023 -0600
+
+    added testargetnormal
+
+commit 5a971439c42282f768708f7338430c3766a1854d
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Fri Oct 6 23:44:40 2023 -0600
+
+    Finished Mixed tests
+
+commit 7e3ae475fe3b6f4c2d2c39bc04747322339d3e07
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Fri Oct 6 17:07:20 2023 -0600
+
+    Added Getters
+
+commit 5966bfcbfdebe71034ff01503d119fcc05434349
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Fri Oct 6 17:04:29 2023 -0600
+
+    Ready to complete other tests
+
+commit fbfb588eb5e47f3ead72cefd6f3679f16efd6fa2
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Fri Oct 6 17:03:11 2023 -0600
+
+    TestTargetsOccupied() tests done
+
+commit 65d9446681829b48640e6994546ce0bfeeb9378d
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Fri Oct 6 16:52:36 2023 -0600
+
+    TestTargetsRoom() Tests Complete
+
+commit 395deaa1cc1df7a0f7070fee493e2c863a48b9d0
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Fri Oct 6 16:24:47 2023 -0600
+
+    Finished Adjacency Tests
+
+commit 52bccacf01557d50a209a9f0fb8d6958f595f938
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Fri Oct 6 14:56:58 2023 -0600
+
+    Test Skeleton Created
+
+commit 495f066e43abd276d2eccfbf9ba5ca9f51b25ac8
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Fri Oct 6 14:05:49 2023 -0600
+
+    Clue Paths 1 setup
+
+commit 4a8c38f33b26039234087f1fb96e55324653b24a
+Author: Alexander Hansen <ahansen1@mines.edu>
+Date:   Fri Oct 6 13:51:00 2023 -0600
+
+    Finished Clue Layout
+
+commit cce6440981a3b0df815b29bba533bbe47a9ac50e
+Author: Alexander Hansen <ahansen1@mines.edu>
+Date:   Fri Oct 6 13:36:52 2023 -0600
+
+    Setup Clue Repo
+
+commit 002ccc42c58df31fbbb68a7a09f9636e67dbcadb
+Author: Alexander Hansen <ahansen1@mines.edu>
+Date:   Fri Oct 6 13:33:28 2023 -0600
+
+    Initial commit
