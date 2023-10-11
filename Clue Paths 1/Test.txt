@@ -1,0 +1,15 @@
+Authors:
+Alexander Hansen
+Michael Hargraves
+
+testRoomLabels():
+For this test case we decided to test all of our rooms to ensure that the file was loaded correctly
+
+FourDoorDirections():
+For this test, we chose to test the doors to the food hall that face right and up.
+We then, test the left door direction into our panic room, and then we finish it off by
+testing the doorway that faces down into the garage.
+
+testRooms():
+We test our secret passage in the closet as well as test the center of our food hall room.
+We end it off with testing one of the few unused cells in our design
