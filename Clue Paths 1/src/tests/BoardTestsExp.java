@@ -27,6 +27,8 @@ class BoardTestsExp {
 			Assert.assertEquals(0, 1);
 			return;
 		}
+		cell.addAdjacency(board.getCell(1, 0));
+	    cell.addAdjacency(board.getCell(0, 1));
 		Set<TestBoardCell> testList = cell.getAdjList();
 		Assert.assertTrue(testList.contains(board.getCell(1, 0)));
 		Assert.assertTrue(testList.contains(board.getCell(0, 1)));

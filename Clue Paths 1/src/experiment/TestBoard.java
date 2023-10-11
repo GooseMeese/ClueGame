@@ -11,8 +11,11 @@ public class TestBoard {
 	
 	// Empty constructor
 	public TestBoard() {
-		super();
-	}
+        super();
+        grid = new TestBoardCell[ROWS][COLS];
+        targets = new HashSet<>();
+        visited = new HashSet<>();
+    }
 	
 	// Calculates targets for a move from startCell of length pathlength.
 	public void calcTargets(TestBoardCell startCell, int pathlength) {
@@ -42,8 +45,12 @@ public class TestBoard {
 	
 	// Returns the cell from the board at row, col
 	public TestBoardCell getCell(int row, int col) {
-		return null;
+	    if (row >= 0 && row < ROWS && col >= 0 && col < COLS) {
+	        return grid[row][col];
+	    }
+	    return null;
 	}
+
 	
 	// Gets the targets last created by calcTargets()
 	public Set<TestBoardCell> getTargets(){

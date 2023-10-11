@@ -10,14 +10,20 @@ public class TestBoardCell {
 	
 	// Constructor with row and col inputs
 	public TestBoardCell(int row, int col) {
-		super();
+	    super();
+	    this.row = row;
+	    this.col = col;
+	    this.isRoom = false;
+	    this.isOccupied = false;
+	    this.adjList = new HashSet<>();
 	}
+
 	
 	// Adds an adjacent cell to this cells adjacency list
 	public void addAdjacency(TestBoardCell cell) {
-		
+	    adjList.add(cell);
 	}
-	
+
 	// Returns the adjacency list for the cell
 	public Set<TestBoardCell> getAdjList(){
 		Set<TestBoardCell> adjacencyList = new HashSet<>();
@@ -31,7 +37,7 @@ public class TestBoardCell {
 	
 	// Getter for if a space is a room cell
 	public boolean getRoom() {
-		return true;
+		return isRoom;
 	}
 	
 	
@@ -42,8 +48,10 @@ public class TestBoardCell {
 	
 	// Getter for indicating if a cell is occupied by another player
 	public boolean getOccupied() {
-		return true;
+		return isOccupied;
 	}
+
+
 
 	
 }
