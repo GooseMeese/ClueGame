@@ -8,7 +8,6 @@ Room, Mancave, M
 Room, Panic Room, P
 Room, Office, O
 Room, Bathroom, T
-
 // other spaces on board
 Space, Unused, X
 Space, Walkway, W
