@@ -1,12 +1,12 @@
 package clueGame;
 import java.util.*;
-
+import java.util.Scanner;
+import java.io.*;	
 public class Board {
 	private BoardCell[][] grid;
 	private int numRows, numColumns;
 	private String layoutConfigFile, setupConfigFile;
 	private Map<Character, Room> roomMap;
-
 	/*
 	 * variable and methods used for singleton pattern
 	 */
@@ -28,12 +28,20 @@ public class Board {
 	 * initialize the board (since we are using singleton pattern)
 	 */
 	public void initialize() {
-		// Empty
+		this.loadSetupConfig();
 	}
 
 	
 	public void loadSetupConfig(){
-		// Empty
+		try (Scanner sc = new Scanner(new File(setupConfigFile))){
+			while (sc.hasNextLine()) {
+				String[] temp = sc.nextLine().split(",");
+				roomMap.put(temp[2].charAt(0), new Room(temp[1]));
+			}
+		} catch(FileNotFoundException e) {
+			System.out.println("Error: File not found");
+		}
+		System.out.print(setupConfigFile);
 	}
 
 	
@@ -72,7 +80,8 @@ public class Board {
 	}
 
 	public void setConfigFiles(String string, String string2) {
-		// TODO Auto-generated method stub
+		this.layoutConfigFile = string;
+		this.setupConfigFile = string2;
 		
 	}
 

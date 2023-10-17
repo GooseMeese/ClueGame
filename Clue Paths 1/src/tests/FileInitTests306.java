@@ -8,6 +8,9 @@ package tests;
 // Assert.assertEquals
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.util.Scanner;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -33,6 +36,7 @@ public class FileInitTests306 {
 		board = Board.getInstance();
 		// set the file names to use my config files
 		board.setConfigFiles("ClueLayout306.csv", "ClueSetup306.txt");
+		
 		// Initialize will load BOTH config files
 		board.initialize();
 	}

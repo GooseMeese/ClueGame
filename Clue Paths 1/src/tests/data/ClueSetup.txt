@@ -1,14 +1,14 @@
 // ROoms and room cards
-Room, Food Hall, F
-Room, Closet, C
-Room, Garage, G
-Room, Bar, B
-Room, Gameroom, A
-Room, Mancave, M
-Room, Panic Room, P
-Room, Office, O
-Room, Bathroom, T
+Room,Food Hall,F
+Room,Closet,C
+Room,Garage,G
+Room,Bar,B
+Room,Gameroom,A
+Room,Mancave,M
+Room,Panic Room,P
+Room,Office,O
+Room,Bathroom,T
 // other spaces on board
-Space, Unused, X
-Space, Walkway, W
+Space,Unused,X
+Space,Walkway,W
 
