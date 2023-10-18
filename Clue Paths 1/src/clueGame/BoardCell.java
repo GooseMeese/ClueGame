@@ -9,7 +9,7 @@ public class BoardCell {
 	private int row, col;
 	private Boolean isRoom, isOccupied, doorway, roomCenter, label;
 	char type, roomInitial;
-	Set<TestBoardCell> adjList;
+	Set<BoardCell> adjList;
 	DoorDirection direction;
 	char secretPassage;
 	// Constructor with row and col inputs
@@ -17,17 +17,17 @@ public class BoardCell {
 	    super();
 	    this.row = row;
 	    this.col = col;
-	    adjList = new HashSet<TestBoardCell>();
+	    adjList = new HashSet<BoardCell>();
 	}
 
 	
 	// Adds an adjacent cell to this cells adjacency list
-	public void addAdjacency(TestBoardCell cell) {
-	    this.adjList.add(cell);
+	public void addAdjacency(BoardCell grid) {
+	    this.adjList.add(grid);
 	}
 
 	// Returns the adjacency list for the cell
-	public Set<TestBoardCell> getAdjList(){
+	public Set<BoardCell> getAdjList(){
 		return adjList;
 	}
 	
