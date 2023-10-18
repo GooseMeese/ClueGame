@@ -40,12 +40,16 @@ public class Board {
 				if( temp[0].isEmpty()) {
 					break;
 				}
-				if (temp[0].charAt(0) == '/') {
-					continue;
-				}
 				for (int i = 0; i < temp.length; i++) {
-					System.out.print(temp[i]);
+					BoardCell tempCell = new BoardCell(x, i);
+					if (roomMap.containsKey(temp[i].charAt(0))) {
+						tempCell.setRoom(true);
+						if (temp[i].length() > 1) {
+							
+						}
+					}
 				}
+				x++;
 				System.out.println();
 				roomMap.put(temp[2].charAt(0), new Room(temp[1]));
 			}
@@ -59,7 +63,6 @@ public class Board {
 	public void loadLayoutConfig(){
 		File file = new File(layoutConfigFile);
 		try (Scanner sc = new Scanner(file)){
-			int x = 0;
 			while (sc.hasNextLine()) {
 				String[] temp = sc.nextLine().split(",");
 				if( temp[0].isEmpty()) {
