@@ -20,9 +20,11 @@ public class BoardCell {
 	    this.col = col;
 	    adjList = new HashSet<BoardCell>();
 	}
+	
 	public void setPassage() {
-		secretPassage = 'K';
+		secretPassage = 'S';
 	}
+	
 	public void setDirection(DoorDirection dir) {
 		this.direction = dir;
 	}
