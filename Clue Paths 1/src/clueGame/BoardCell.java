@@ -12,6 +12,7 @@ public class BoardCell {
 	Set<BoardCell> adjList;
 	DoorDirection direction;
 	char secretPassage;
+	private String roomName;
 	// Constructor with row and col inputs
 	public BoardCell(int row, int col) {
 	    super();
@@ -19,8 +20,12 @@ public class BoardCell {
 	    this.col = col;
 	    adjList = new HashSet<BoardCell>();
 	}
-
-	
+	public void setPassage() {
+		secretPassage = 'K';
+	}
+	public void setDirection(DoorDirection dir) {
+		this.direction = dir;
+	}
 	// Adds an adjacent cell to this cells adjacency list
 	public void addAdjacency(BoardCell grid) {
 	    this.adjList.add(grid);

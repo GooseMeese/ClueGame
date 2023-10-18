@@ -124,7 +124,28 @@ public class Board {
 					if (roomMap.containsKey(temp[i].charAt(0))) {
 						tempCell.setRoom(true);
 						if (temp[i].length() > 1) {
-
+							if (temp[i].charAt(1) == '*') {
+								tempCell.setCenter(true);
+							}
+							if (temp[i].charAt(1) == '#') {
+								tempCell.setLabel(true);
+							}
+							if (temp[i].charAt(1) == '<') {
+								tempCell.setDoorway(true);
+								tempCell.setDirection(DoorDirection.LEFT);
+							} else if ( temp[i].charAt(1) ==  '>') {
+								tempCell.setDoorway(true);
+								tempCell.setDirection(DoorDirection.RIGHT);
+							}  else if ( temp[i].charAt(1) ==  '^') {
+								tempCell.setDoorway(true);
+								tempCell.setDirection(DoorDirection.UP);
+							}  else if (temp[i].charAt(1) ==  'v') {
+								tempCell.setDoorway(true);
+								tempCell.setDirection(DoorDirection.DOWN);
+							} 
+							if (temp[i].charAt(1) == 'S') {
+								tempCell.setPassage();
+							}
 						}
 					}
 				}
