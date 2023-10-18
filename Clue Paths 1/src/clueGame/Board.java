@@ -112,7 +112,12 @@ public class Board {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.loadLayoutConfig();
+		try {
+			this.loadLayoutConfig();
+		} catch (BadConfigFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	
@@ -208,16 +213,16 @@ public class Board {
 								this.getCell(j, i).isRoomCenter();
 								break;
 							case '>':
-								this.getCell(j, i).setDoorDirection('R');
+								this.getCell(j, i).setDirection('R');
 								break;
 							case '<':
-								this.getCell(j, i).setDoorDirection('L');
+								this.getCell(j, i).setDirection('L');
 								break;
 							case '^':
-								this.getCell(j, i).setDoorDirection('U');
+								this.getCell(j, i).setDirection('U');
 								break;
 							case 'v':
-								this.getCell(j, i).setDoorDirection('D');
+								this.getCell(j, i).setDirection('D');
 								break;
 							//TODO SECRET PASSAGE CASE 
 							default:

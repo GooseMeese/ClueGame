@@ -25,9 +25,24 @@ public class BoardCell {
 		secretPassage = 'S';
 	}
 	
-	public void setDirection(DoorDirection dir) {
-		this.direction = dir;
+	public void setDirection(char c) {
+		switch(c) {
+			case 'U':
+				this.direction = DoorDirection.UP;
+				break;
+			case 'D':
+				this.direction = DoorDirection.DOWN;
+				break;
+			case 'L':
+				this.direction = DoorDirection.LEFT;
+				break;
+			case 'R':
+				this.direction = DoorDirection.RIGHT;
+				break;
+		}
+		return;
 	}
+	
 	// Adds an adjacent cell to this cells adjacency list
 	public void addAdjacency(BoardCell grid) {
 	    this.adjList.add(grid);
