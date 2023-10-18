@@ -1,4 +1,4 @@
-// ROoms and room cards
+//ROoms and room cards
 Room,Food Hall,F
 Room,Closet,C
 Room,Garage,G
@@ -8,7 +8,7 @@ Room,Mancave,M
 Room,Panic Room,P
 Room,Office,O
 Room,Bathroom,T
-// other spaces on board
+//other spaces on board
 Space,Unused,X
 Space,Walkway,W
 

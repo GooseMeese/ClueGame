@@ -11,7 +11,6 @@ public class Board {
 	 * variable and methods used for singleton pattern
 	 */
 	private static Board theInstance = new Board();
-
 	// constructor is private to ensure only one can be created
 	private Board() {
 		super() ;
@@ -33,21 +32,49 @@ public class Board {
 
 	
 	public void loadSetupConfig(){
-		try (Scanner sc = new Scanner(new File(setupConfigFile))){
+		File file = new File(setupConfigFile);
+		try (Scanner sc = new Scanner(file)){
+			int x = 0;
 			while (sc.hasNextLine()) {
 				String[] temp = sc.nextLine().split(",");
+				if( temp[0].isEmpty()) {
+					break;
+				}
+				if (temp[0].charAt(0) == '/') {
+					continue;
+				}
+				for (int i = 0; i < temp.length; i++) {
+					System.out.print(temp[i]);
+				}
+				System.out.println();
 				roomMap.put(temp[2].charAt(0), new Room(temp[1]));
 			}
 		} catch(FileNotFoundException e) {
 			System.out.println("Error: File not found");
 		}
-		System.out.print(setupConfigFile);
+		System.out.print(roomMap.isEmpty());
 	}
 
 	
 	public void loadLayoutConfig(){
-		// Empty
+		File file = new File(layoutConfigFile);
+		try (Scanner sc = new Scanner(file)){
+			int x = 0;
+			while (sc.hasNextLine()) {
+				String[] temp = sc.nextLine().split(",");
+				if( temp[0].isEmpty()) {
+					break;
+				}
+				for (int i = 0; i < temp.length; i++) {
+					System.out.print(temp[i]);
+				}
+				System.out.println();
+			}
+		} catch(FileNotFoundException e) {
+			System.out.println("Error: File not found");
+		}
 	}
+
 
 	
 	public Room getRoom(char c) {
