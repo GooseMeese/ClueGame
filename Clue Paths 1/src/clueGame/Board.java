@@ -142,12 +142,14 @@ public class Board {
 							}  else if (temp[i].charAt(1) ==  'v') {
 								tempCell.setDoorway(true);
 								tempCell.setDirection(DoorDirection.DOWN);
-							} 
+							}
 							if (temp[i].charAt(1) == 'S') {
 								tempCell.setPassage();
 							}
 						}
 					}
+					grid[x][i] = tempCell;
+					System.out.println(grid[x][i].getInitial());
 				}
 				x++;
 				System.out.println();
