@@ -104,7 +104,7 @@ public class Board {
 	/*
 	 * initialize the board (since we are using singleton pattern)
 	 */
-	public void initialize() throws BadConfigFormatException {
+	public void initialize(){
 		this.loadSetupConfig();
 		this.loadLayoutConfig();
 	}
