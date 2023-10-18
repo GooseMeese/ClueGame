@@ -7,10 +7,12 @@ public class Board {
 	private int numRows, numColumns;
 	private String layoutConfigFile, setupConfigFile;
 	private Map<Character, Room> roomMap;
+	
 	/*
 	 * variable and methods used for singleton pattern
 	 */
 	private static Board theInstance = new Board();
+	
 	// constructor is private to ensure only one can be created
 	private Board() {
 		super() ;
@@ -19,6 +21,9 @@ public class Board {
 
 	// this method returns the only Board
 	public static Board getInstance() {
+		if(theInstance == null) {
+			theInstance = new Board();
+		}
 		return theInstance;
 	}
 
@@ -27,7 +32,12 @@ public class Board {
 	 * initialize the board (since we are using singleton pattern)
 	 */
 	public void initialize() {
-		this.loadSetupConfig();
+		try {
+			this.loadSetupConfig();
+			this.loadLayoutConfig();
+		} catch (BadConfigFormatException e) {
+			
+		}
 	}
 
 	
@@ -81,31 +91,28 @@ public class Board {
 
 	
 	public Room getRoom(char c) {
-	    return new Room("Blank");
+	    return roomMap.get(c);
 	}
 
 	
 	public Room getRoom(BoardCell cell) {
-		// TODO Auto-generated method stub
-		return null;
+		char character = cell.getInitial();
+		return roomMap.get(character);
 	}
 	
 	public int getNumRows() {
-		// TODO Auto-generated method stub
 		return numColumns;
 	}
 
 	
 	
 	public int getNumColumns() {
-		// TODO Auto-generated method stub
 		return numColumns;
 	}
 
 	
 	
 	public BoardCell getCell(int i, int j) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
