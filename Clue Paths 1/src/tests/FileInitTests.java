@@ -46,6 +46,9 @@ public class FileInitTests {
 			assertEquals("Bar", board.getRoom('B').getName() );
 			assertEquals("Gameroom", board.getRoom('A').getName() );
 			assertEquals("Mancave", board.getRoom('M').getName() );
+			assertEquals("Panic Room", board.getRoom('P').getName() );
+			assertEquals("Office", board.getRoom('O').getName() );
+			assertEquals("Bathroom", board.getRoom('T').getName() );
 			assertEquals("Unused", board.getRoom('X').getName());
 			assertEquals("Walkway", board.getRoom('W').getName() );
 		}
@@ -62,7 +65,7 @@ public class FileInitTests {
 		// These cells are white on the planning spreadsheet
 		@Test
 		public void FourDoorDirections() {
-			BoardCell cell = board.getCell(4, 5);
+			BoardCell cell = board.getCell(3, 4);
 			if (cell == null) {
 				assertEquals(1, 0);
 			}
@@ -71,7 +74,7 @@ public class FileInitTests {
 			cell = board.getCell(3, 11);
 			assertTrue(cell.isDoorway());
 			assertEquals(DoorDirection.UP, cell.getDoorDirection());
-			cell = board.getCell(3, 4);
+			cell = board.getCell(2, 3);
 			assertTrue(cell.isDoorway());
 			assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
 			cell = board.getCell(16, 6);
@@ -100,10 +103,10 @@ public class FileInitTests {
 		@Test
 		public void testRooms() {
 			// just test a standard room location
-			BoardCell cell = board.getCell( 23, 23);
+			BoardCell cell = board.getCell( 11, 17);
 			Room room = board.getRoom( cell ) ;
 			assertTrue( room != null );
-			assertEquals( room.getName(), "Kitchen" ) ;
+			assertEquals( room.getName(), "Office" ) ;
 			assertFalse( cell.isLabel() );
 			assertFalse( cell.isRoomCenter() ) ;
 			assertFalse( cell.isDoorway()) ;
@@ -125,14 +128,14 @@ public class FileInitTests {
 			assertTrue( room.getCenterCell() == cell );
 			
 			// this is a secret passage test
-			cell = board.getCell(7, 22);
+			cell = board.getCell(7, 20);
 			room = board.getRoom( cell ) ;
 			assertTrue( room != null );
 			assertEquals( room.getName(), "Closet" ) ;
-			assertTrue( cell.getSecretPassage() == 'K' );
+			assertTrue( cell.getSecretPassage() == 'S' );
 			
 			// test a walkway
-			cell = board.getCell(5, 1);
+			cell = board.getCell(5, 0);
 			room = board.getRoom( cell ) ;
 			// Note for our purposes, walkways and closets are rooms
 			assertTrue( room != null );
@@ -141,7 +144,7 @@ public class FileInitTests {
 			assertFalse( cell.isLabel() );
 			
 			// test a unused cell
-			cell = board.getCell(23, 13);
+			cell = board.getCell(13, 0);
 			room = board.getRoom( cell ) ;
 			assertTrue( room != null );
 			assertEquals( room.getName(), "Unused" ) ;
