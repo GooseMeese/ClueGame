@@ -71,7 +71,6 @@ public class BoardCell {
 	}
 	
 	public boolean isRoomCenter() {
-		// TODO Auto-generated method stub
 		return roomCenter;
 	}
 	

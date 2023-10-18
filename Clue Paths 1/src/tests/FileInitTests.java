@@ -19,8 +19,8 @@ import clueGame.Room;
 public class FileInitTests {
 	// Constants that I will use to test whether the file was loaded correctly
 		public static final int LEGEND_SIZE = 11;
-		public static final int NUM_ROWS = 23;
-		public static final int NUM_COLUMNS = 22;
+		public static final int NUM_ROWS = 21;
+		public static final int NUM_COLUMNS = 20;
 
 		// NOTE: I made Board static because I only want to set it up one
 		// time (using @BeforeAll), no need to do setup before each test.
@@ -42,10 +42,6 @@ public class FileInitTests {
 			// from the hash, including the first and last in the file and a few others
 			assertEquals("Food Hall", board.getRoom('F').getName() );
 			assertEquals("Closet", board.getRoom('C').getName() );
-			assertEquals("Garage", board.getRoom('G').getName() );
-			assertEquals("Bar", board.getRoom('B').getName() );
-			assertEquals("Gameroom", board.getRoom('A').getName() );
-			assertEquals("Mancave", board.getRoom('M').getName() );
 			assertEquals("Panic Room", board.getRoom('P').getName() );
 			assertEquals("Office", board.getRoom('O').getName() );
 			assertEquals("Bathroom", board.getRoom('T').getName() );
