@@ -51,8 +51,15 @@ public class BoardCell {
 	public boolean getOccupied() {
 		return isOccupied;
 	}
-
-
+	public void setCenter(boolean x) {
+		this.roomCenter = x;
+	}
+	public void setLabel(boolean x) {
+		this.label = x;
+	}
+	public void setDoorway(boolean x) {
+		this.doorway = x;
+	}
 	public boolean isRoomCenter() {
 		// TODO Auto-generated method stub
 		return roomCenter;
