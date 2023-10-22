@@ -1,14 +1,11 @@
 package tests;
 
-import java.io.File;
-
 /*
  * This program tests that, when loading config files, exceptions 
  * are thrown appropriately.
  */
 
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;

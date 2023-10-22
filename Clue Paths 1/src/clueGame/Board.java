@@ -135,9 +135,9 @@ public class Board {
 						String message = "Invalid Setup format, expecting a room name and symbol for each room, bad line: \" " + line + "\".";
 						throw new BadConfigFormatException(message);
 					}
-					String roomName = parts[1].substring(1);
-					Room newRoom = new Room(roomName);
-					String symbol = parts[2].substring(1);
+					String roomName = parts[1].substring(0);
+					Room newRoom = new Room(roomName);				
+					String symbol = parts[2].substring(0);
 					roomMap.put(symbol.charAt(0), newRoom);
 					
 				}else if(line.matches("^Space.*$")) {
@@ -146,9 +146,8 @@ public class Board {
 						throw new BadConfigFormatException(message);
 					}
 					
-					String spaceName = parts[1].substring(1);
-					String spaceSymbol = parts[2].substring(1);
-					
+					String spaceName = parts[1].substring(0);
+					String spaceSymbol = parts[2].substring(0);
 					Room newRoom = new Room(spaceName);
 					roomMap.put(spaceSymbol.charAt(0), newRoom);
 					cellMap.put(spaceSymbol.charAt(0), spaceName);
@@ -195,37 +194,51 @@ public class Board {
 			this.numRows = numRows;
 			this.setupBoard();
 			for(int i = 0; i < boardLayout.size() - 1;i++) {
-				for(int j = 0; j < boardLayout.get(i).length - 1; j++) {
+				for(int j = 0; j < boardLayout.get(i).length; j++) {
 					String[] arr = boardLayout.get(i);
 					
 					if(roomMap.containsKey(arr[j].charAt(0)) && !cellMap.containsKey(arr[j].charAt(0))) {
-						this.getCell(j, i).setRoom(true); //if in roomMap its a room
+						this.getCell(i, j).setRoom(true); //if in roomMap its a room
+						
 					}
 					
 					if(roomMap.containsKey(arr[j].charAt(0))) {
-						this.getCell(j, i).setInitial(arr[j].charAt(0));
+						this.getCell(i, j).setInitial(arr[j].charAt(0));
 						if(arr[j].length() != 1) {
 							switch( arr[j].charAt(1) ) {
 							case '#':
-								this.getCell(j, i).isLabel();
+								this.getCell(i, j).setLabel(true);
+								roomMap.get(arr[j].charAt(0)).setLabelCell(this.getCell(i, j));
+								System.out.println(arr[j].charAt(1) + "succesful");
 								break;
 							case '*':
-								this.getCell(j, i).isRoomCenter();
+								this.getCell(i, j).setCenter(true);
+								roomMap.get(arr[j].charAt(0)).setCenterCell(this.getCell(i, j));
+								System.out.println(arr[j].charAt(1) + "succesful");
 								break;
 							case '>':
-								this.getCell(j, i).setDirection('R');
+								this.getCell(i, j).setDirection('R');
+								this.getCell(i, j).setDoorway(true);
+								System.out.println(arr[j].charAt(1) + "succesful");
 								break;
 							case '<':
-								this.getCell(j, i).setDirection('L');
+								this.getCell(i, j).setDirection('L');
+								this.getCell(i, j).setDoorway(true);
 								break;
 							case '^':
-								this.getCell(j, i).setDirection('U');
+								this.getCell(i, j).setDirection('U');
+								this.getCell(i, j).setDoorway(true);
 								break;
 							case 'v':
-								this.getCell(j, i).setDirection('D');
+								this.getCell(i, j).setDirection('D');
+								this.getCell(i, j).setDoorway(true);
 								break;
-							//TODO SECRET PASSAGE CASE 
 							default:
+								if (roomMap.containsKey(arr[j].charAt(1))) {
+									this.getCell(i, j).setSecretPassage(arr[j].charAt(1));
+									
+									break;
+								}
 								String message = "Invalid second character in boardLayout on cell row: " + i + " column: " + j + "Bad character: " + (arr[j].charAt(1)) + " .";
 								throw new BadConfigFormatException(message);
 							}
@@ -257,7 +270,7 @@ public class Board {
 	}
 
 	public int getNumRows() {
-		return numColumns;
+		return numRows;
 	}
 
 

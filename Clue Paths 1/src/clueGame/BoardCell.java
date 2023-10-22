@@ -19,10 +19,14 @@ public class BoardCell {
 	    this.row = row;
 	    this.col = col;
 	    adjList = new HashSet<BoardCell>();
+	    isRoom = false;
+	    isOccupied = false;
+	    doorway = false;
+	    roomCenter = false;
+	    label = false;
 	}
-	
-	public void setPassage() {
-		secretPassage = 'S';
+	public String getRoomName() {
+		return roomName;
 	}
 	
 	public void setDirection(char c) {
@@ -111,5 +115,8 @@ public class BoardCell {
 	
 	public void setInitial(char character) {
 		this.roomInitial = character;
+	}
+	public void setSecretPassage(char s) {
+		this.secretPassage = s;
 	}
 }

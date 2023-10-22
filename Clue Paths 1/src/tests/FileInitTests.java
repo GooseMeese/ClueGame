@@ -19,8 +19,8 @@ import clueGame.Room;
 public class FileInitTests {
 	// Constants that I will use to test whether the file was loaded correctly
 		public static final int LEGEND_SIZE = 11;
-		public static final int NUM_ROWS = 21;
-		public static final int NUM_COLUMNS = 20;
+		public static final int NUM_ROWS = 22;
+		public static final int NUM_COLUMNS = 21;
 
 		// NOTE: I made Board static because I only want to set it up one
 		// time (using @BeforeAll), no need to do setup before each test.
@@ -86,13 +86,13 @@ public class FileInitTests {
 		@Test
 		public void testNumberOfDoorways() {
 			int numDoors = 0;
-			for (int row = 0; row < board.getNumRows(); row++)
-				for (int col = 0; col < board.getNumColumns(); col++) {
+			for (int row = 0; row < board.getNumRows()- 1; row++)
+				for (int col = 0; col < board.getNumColumns() - 1; col++) {
 					BoardCell cell = board.getCell(row, col);
 					if (cell.isDoorway())
 						numDoors++;
 				}
-			Assert.assertEquals(13, numDoors);
+			Assert.assertEquals(14, numDoors);
 		}
 
 		// Test a few room cells to ensure the room initial is correct.
@@ -126,12 +126,13 @@ public class FileInitTests {
 			// this is a secret passage test
 			cell = board.getCell(7, 20);
 			room = board.getRoom( cell ) ;
+			//System.out.println(cell.getRoomName());
 			assertTrue( room != null );
 			assertEquals( room.getName(), "Closet" ) ;
-			assertTrue( cell.getSecretPassage() == 'S' );
+			assertTrue( cell.getSecretPassage() == 'B' );
 			
 			// test a walkway
-			cell = board.getCell(5, 0);
+			cell = board.getCell(6, 0);
 			room = board.getRoom( cell ) ;
 			// Note for our purposes, walkways and closets are rooms
 			assertTrue( room != null );

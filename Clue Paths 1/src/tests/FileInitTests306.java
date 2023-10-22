@@ -8,9 +8,6 @@ package tests;
 // Assert.assertEquals
 import static org.junit.Assert.*;
 
-import java.io.File;
-import java.util.Scanner;
-
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -36,7 +33,6 @@ public class FileInitTests306 {
 		board = Board.getInstance();
 		// set the file names to use my config files
 		board.setConfigFiles("ClueLayout306.csv", "ClueSetup306.txt");
-		
 		// Initialize will load BOTH config files
 		board.initialize();
 	}
@@ -65,9 +61,6 @@ public class FileInitTests306 {
 	@Test
 	public void FourDoorDirections() {
 		BoardCell cell = board.getCell(8, 7);
-		if (cell == null) {
-			assertEquals(0, 1);
-		}
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
 		cell = board.getCell(7, 12);
