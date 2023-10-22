@@ -114,25 +114,28 @@ public class Board {
 	public void loadSetupConfig() throws BadConfigFormatException{
 		String finishedSetup = "./data/" + setupConfigFile;
 		try(Scanner setupScanner = new Scanner(new File(finishedSetup))){
-			//TODO read data from setupConfigFile
+			// Read from setupConfigFile
 			while(setupScanner.hasNext()) {
 				String line = new String(setupScanner.nextLine());
 				String[] parts = line.split(", ");
 				
-				//Regex for each line, to tell if its a room, a space, or a comment 
+				// Check each line for rooms and spaces
 				if(line.matches("^Room.*$")) {
 					if(parts.length != 3) {
-						String message = "Invalid Setup format, expecting a room name and symbol for each room, bad line: \" " + line + "\".";
+						String message = "Invalidformat, expecting a name and symbol for each room, bad line: \" " + line + "\".";
+						System.out.println("Exception message: " + message);
 						throw new BadConfigFormatException(message);
 					}
+					
 					String roomName = parts[1].substring(0);
 					Room newRoom = new Room(roomName);				
 					String symbol = parts[2].substring(0);
 					roomMap.put(symbol.charAt(0), newRoom);
 					
-				}else if(line.matches("^Space.*$")) {
+				} else if(line.matches("^Space.*$")) {
 					if(parts.length != 3) {
-						String message = "Invalid Setup format, expecting a space name and symbol for each type of space, bad line: \" " + line + "\".";
+						String message = "Invalid format, expecting aname and symbol for each type of space, bad line: \" " + line + "\".";
+						System.out.println("Exception message: " + message);
 						throw new BadConfigFormatException(message);
 					}
 					
@@ -142,17 +145,18 @@ public class Board {
 					roomMap.put(spaceSymbol.charAt(0), newRoom);
 					cellMap.put(spaceSymbol.charAt(0), spaceName);
 					
-				}else {
+				} else {
 					continue;
 				}
 			}
 			
 			
-		}catch(FileNotFoundException e){
-			System.out.println("File not found, please try again.");
+		} catch(FileNotFoundException e){
+			System.out.println("File not found.");
 		}
 		
 	}
+	
 	public void makeAdjList() {
 		for(int i = 0;i<numRows;i++) {
 			for(int j = 0;j<numColumns;j++) {
@@ -190,16 +194,18 @@ public class Board {
 			int numCols = 0;
 			int numRows = 0;
 			boolean firstRow = true;
+			
 			while(test.hasNext()) {
 				String line = new String(test.nextLine());
 				String[] spaces = line.split(",");
 				if(firstRow) { 
 					numCols = spaces.length; 
 					firstRow = false;
-				}else {
+				} else {
 					if(numCols != spaces.length) {
-						//Throw exception if the board layout file does not have the same number of columns in every row.
-						String message = "Number of colums in this row does not match the number of columns in another row, bad layout format! Error on line " + (numRows+1) + " of " + finishedLayout;
+						// Throw exception if the board layout file does not have the same number of columns in every row.
+						String message = "Number of columns in this row does not match the number of columns in another row. Error on line " + (numRows+1) + " of " + finishedLayout;
+						System.out.println("Exception message: " + message);
 						throw new BadConfigFormatException(message); 
 					}
 				}
@@ -222,52 +228,61 @@ public class Board {
 					if(roomMap.containsKey(arr[j].charAt(0))) {
 						this.getCell(i, j).setInitial(arr[j].charAt(0));
 						if(arr[j].length() != 1) {
-							switch( arr[j].charAt(1) ) {
-							case '#':
-								this.getCell(i, j).setLabel(true);
-								roomMap.get(arr[j].charAt(0)).setLabelCell(this.getCell(i, j));
-								break;
-							case '*':
-								this.getCell(i, j).setCenter(true);
-								roomMap.get(arr[j].charAt(0)).setCenterCell(this.getCell(i, j));
-								break;
-							case '>':
-								this.getCell(i, j).setDirection('R');
-								this.getCell(i, j).setDoorway(true);
-								break;
+							switch(arr[j].charAt(1)) {
+							
 							case '<':
 								this.getCell(i, j).setDirection('L');
 								this.getCell(i, j).setDoorway(true);
 								break;
+								
 							case '^':
 								this.getCell(i, j).setDirection('U');
 								this.getCell(i, j).setDoorway(true);
 								break;
+								
+							case '>':
+								this.getCell(i, j).setDirection('R');
+								this.getCell(i, j).setDoorway(true);
+								break;
+								
 							case 'v':
 								this.getCell(i, j).setDirection('D');
 								this.getCell(i, j).setDoorway(true);
 								break;
+								
+							case '*':
+								this.getCell(i, j).setCenter(true);
+								roomMap.get(arr[j].charAt(0)).setCenterCell(this.getCell(i, j));
+								break;
+								
+							case '#':
+								this.getCell(i, j).setLabel(true);
+								roomMap.get(arr[j].charAt(0)).setLabelCell(this.getCell(i, j));
+								break;
+								
 							default:
 								if (roomMap.containsKey(arr[j].charAt(1))) {
 									this.getCell(i, j).setSecretPassage(arr[j].charAt(1));
 									
 									break;
 								}
-								String message = "Invalid second character in boardLayout on cell row: " + i + " column: " + j + "Bad character: " + (arr[j].charAt(1)) + " .";
-								throw new BadConfigFormatException(message);
+								// Throw an exception when the second character in a cell is invalid
+								String message = "Invalid second character on row: " + i + " column: " + j + "Bad character: " + (arr[j].charAt(1)) + " .";
+								System.out.println("Exception message: " + message);
 							}
 						}
 
-					}else {
+					} else {
 						//Throw exception if character in csv layout not in text setup
 						String message = "This character is not in the Setup but is in the Layout " + arr[j] + " .";
+						System.out.println("Exception message: " + message);
 						throw new BadConfigFormatException(message);
 					}
 				}
 			}
 		}
 		catch (FileNotFoundException e){
-			System.out.println("File not found, please try again.");
+			System.out.println("File not found.");
 		}
 	}
 
