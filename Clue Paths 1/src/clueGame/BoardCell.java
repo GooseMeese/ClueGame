@@ -47,7 +47,6 @@ public class BoardCell {
 	public void addAdjacency(BoardCell grid) {
 	    this.adjList.add(grid);
 	}
-
 	// Returns the adjacency list for the cell
 	public Set<BoardCell> getAdjList(){
 		return adjList;

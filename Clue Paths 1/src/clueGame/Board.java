@@ -31,7 +31,11 @@ public class Board {
 		}
 		return theInstance;
 	}
-
+	public Set<BoardCell> getAdjList(int row, int col){
+		BoardCell cell = this.getCell(row, col);
+		
+		return cell.getAdjList();
+	}
 	// Calculates targets for a move from startCell of length pathlength.
 	public void calcTargets(BoardCell startCell, int pathlength) {
 		targets.clear();
@@ -106,14 +110,15 @@ public class Board {
 	 * initialize the board (since we are using singleton pattern)
 	 */
 	public void initialize(){
+		Board board = Board.getInstance();
 		try {
-			this.loadSetupConfig();
+			board.loadSetupConfig();
 		} catch (BadConfigFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
-			this.loadLayoutConfig();
+			board.loadLayoutConfig();
 		} catch (BadConfigFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
