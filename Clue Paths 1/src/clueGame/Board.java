@@ -85,22 +85,6 @@ public class Board {
 				grid[i][j].setRoom(false);
 			}
 		}
-		for(int i = 0;i<numRows;i++) {
-			for(int j = 0;j<numColumns;j++) {
-				if (i > 0){
-					grid[i][j].addAdjacency(grid[i-1][j]);
-				}
-				if (j > 0){
-					grid[i][j].addAdjacency(grid[i][j-1]);
-				}
-				if (i < numColumns - 1){
-					grid[i][j].addAdjacency(grid[i+1][j]);
-				}
-				if (j < numColumns - 1){
-					grid[i][j].addAdjacency(grid[i][j+1]);
-				}
-			}
-		}
 		visited = new HashSet<BoardCell>();
 		targets = new HashSet<BoardCell>();
 	}
@@ -123,6 +107,7 @@ public class Board {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		this.makeAdjList();
 	}
 
 	
@@ -168,7 +153,35 @@ public class Board {
 		}
 		
 	}
-
+	public void makeAdjList() {
+		for(int i = 0;i<numRows;i++) {
+			for(int j = 0;j<numColumns;j++) {
+				if (grid[i][j].isRoom() == false) {
+					if (i > 0){
+						if (grid[i - 1][j].getInitial() == 'W' || grid[i - 1][j].isDoorway() == true) {
+							grid[i][j].addAdjacency(grid[i-1][j]);
+						}					
+					}
+					if (j > 0){
+						if (grid[i][j-1].getInitial() == 'W' || grid[i][j-1].isDoorway() == true) {
+							grid[i][j].addAdjacency(grid[i][j-1]);
+						}
+					}
+					if (i < numColumns - 1){
+						if (grid[i + 1][j].getInitial() == 'W' || grid[i + 1][j].isDoorway() == true) {
+							grid[i][j].addAdjacency(grid[i+1][j]);
+						}		
+					}
+					if (j < numColumns - 1){
+						if (grid[i][j+1].getInitial() == 'W' || grid[i][j+1].isDoorway() == true) {
+							grid[i][j].addAdjacency(grid[i][j+1]);
+						}		
+					}
+				}//from here we need to figure out how to identify doorways to the the cell if it is a room
+				//as well as account for secret passageways
+			}
+		}
+	}
 
 	public void loadLayoutConfig() throws BadConfigFormatException {
 		String finishedLayout = "./data/" + layoutConfigFile;
