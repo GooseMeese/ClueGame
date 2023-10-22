@@ -86,8 +86,8 @@ public class FileInitTests {
 		@Test
 		public void testNumberOfDoorways() {
 			int numDoors = 0;
-			for (int row = 0; row < board.getNumRows()- 1; row++)
-				for (int col = 0; col < board.getNumColumns() - 1; col++) {
+			for (int row = 0; row < board.getNumRows(); row++)
+				for (int col = 0; col < board.getNumColumns(); col++) {
 					BoardCell cell = board.getCell(row, col);
 					if (cell.isDoorway())
 						numDoors++;
@@ -126,7 +126,6 @@ public class FileInitTests {
 			// this is a secret passage test
 			cell = board.getCell(7, 20);
 			room = board.getRoom( cell ) ;
-			//System.out.println(cell.getRoomName());
 			assertTrue( room != null );
 			assertEquals( room.getName(), "Closet" ) ;
 			assertTrue( cell.getSecretPassage() == 'B' );

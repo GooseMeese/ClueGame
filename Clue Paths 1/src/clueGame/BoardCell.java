@@ -12,7 +12,6 @@ public class BoardCell {
 	Set<BoardCell> adjList;
 	DoorDirection direction;
 	char secretPassage;
-	private String roomName;
 	// Constructor with row and col inputs
 	public BoardCell(int row, int col) {
 	    super();
@@ -24,9 +23,6 @@ public class BoardCell {
 	    doorway = false;
 	    roomCenter = false;
 	    label = false;
-	}
-	public String getRoomName() {
-		return roomName;
 	}
 	
 	public void setDirection(char c) {

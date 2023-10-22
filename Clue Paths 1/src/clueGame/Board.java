@@ -73,16 +73,16 @@ public class Board {
 
 	// Sets up the board and initializes the adjacency list
 	public void setupBoard() {
-		grid = new BoardCell[numColumns][numRows];
-		for(int i = 0;i<numColumns;i++) {
-			for(int j = 0;j<numRows;j++) {
+		grid = new BoardCell[numRows][numColumns];
+		for(int i = 0;i<numRows;i++) {
+			for(int j = 0;j<numColumns;j++) {
 				grid[i][j] = new BoardCell(i, j);
 				grid[i][j].setOccupied(false);
 				grid[i][j].setRoom(false);
 			}
 		}
-		for(int i = 0;i<numColumns;i++) {
-			for(int j = 0;j<numRows;j++) {
+		for(int i = 0;i<numRows;i++) {
+			for(int j = 0;j<numColumns;j++) {
 				if (i > 0){
 					grid[i][j].addAdjacency(grid[i-1][j]);
 				}
@@ -127,7 +127,7 @@ public class Board {
 			//TODO read data from setupConfigFile
 			while(setupScanner.hasNext()) {
 				String line = new String(setupScanner.nextLine());
-				String[] parts = line.split(",");
+				String[] parts = line.split(", ");
 				
 				//Regex for each line, to tell if its a room, a space, or a comment 
 				if(line.matches("^Room.*$")) {
@@ -193,10 +193,9 @@ public class Board {
 			this.numColumns = numCols;
 			this.numRows = numRows;
 			this.setupBoard();
-			for(int i = 0; i < boardLayout.size() - 1;i++) {
+			for(int i = 0; i < boardLayout.size();i++) {
 				for(int j = 0; j < boardLayout.get(i).length; j++) {
 					String[] arr = boardLayout.get(i);
-					
 					if(roomMap.containsKey(arr[j].charAt(0)) && !cellMap.containsKey(arr[j].charAt(0))) {
 						this.getCell(i, j).setRoom(true); //if in roomMap its a room
 						
@@ -209,17 +208,14 @@ public class Board {
 							case '#':
 								this.getCell(i, j).setLabel(true);
 								roomMap.get(arr[j].charAt(0)).setLabelCell(this.getCell(i, j));
-								System.out.println(arr[j].charAt(1) + "succesful");
 								break;
 							case '*':
 								this.getCell(i, j).setCenter(true);
 								roomMap.get(arr[j].charAt(0)).setCenterCell(this.getCell(i, j));
-								System.out.println(arr[j].charAt(1) + "succesful");
 								break;
 							case '>':
 								this.getCell(i, j).setDirection('R');
 								this.getCell(i, j).setDoorway(true);
-								System.out.println(arr[j].charAt(1) + "succesful");
 								break;
 							case '<':
 								this.getCell(i, j).setDirection('L');
