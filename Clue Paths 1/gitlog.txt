@@ -1,3 +1,12 @@
+I, Alex Hansen, certify that I participated equitably in the creation of assignment C15A-2, dated 2023.
+I, Michael Hargraves, certify that I participated equitably in the creation of this assignment C15A-2, dated 2023.
+
+commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Sun Oct 22 21:34:11 2023 -0600
+
+    Finished tests
+
 commit 0caa027fb34cbd5ba8d54d18cec3f40c4419079d
 Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
 Date:   Sun Oct 22 20:17:24 2023 -0600
