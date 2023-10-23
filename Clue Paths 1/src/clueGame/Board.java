@@ -112,41 +112,49 @@ public class Board {
 	}
 
 	
-	public void loadSetupConfig() throws BadConfigFormatException {
-	    String finishedSetup = "./data/" + setupConfigFile;
-	    
-	    try (Scanner setupScanner = new Scanner(new File(finishedSetup))) {
-	        while (setupScanner.hasNext()) {
-	            // Read the next line from the setup file
-	            String line = setupScanner.nextLine();
-	            // Split the line into parts using a comma as a delimiter
-	            String[] parts = line.split(",");
-
-	            if (line.matches("^Room.*$")) {
-	                if (parts.length != 3) {
-	                    // If the cell is a room, validate and extract room name and symbol
-	                    throw new BadConfigFormatException("Invalid Setup, expecting a name and symbol for each room, bad line: \" " + line + "\".");
-	                }
-	                String roomName = parts[1].substring(1);
-	                Room newRoom = new Room(roomName);
-	                String symbol = parts[2].substring(1);
-	                roomMap.put(symbol.charAt(0), newRoom);
-	                
-	            } else if (line.matches("^Space.*$")) {
-	                if (parts.length != 3) {
-	                    // If the cell is a space, validate and extract space name and symbol
-	                    throw new BadConfigFormatException("Invalid Setup, expecting a name and symbol for each type of space, bad line: \" " + line + "\".");
-	                }
-	                String spaceName = parts[1].substring(1);
-	                String spaceSymbol = parts[2].substring(1);
-	                Room newRoom = new Room(spaceName);
-	                roomMap.put(spaceSymbol.charAt(0), newRoom);
-	                cellMap.put(spaceSymbol.charAt(0), spaceName);
-	            }
-	        }
-	    } catch (FileNotFoundException e) {
-	        System.out.println("File not found.");
-	    }
+	public void loadSetupConfig() throws BadConfigFormatException{
+		String finishedSetup = "./data/" + setupConfigFile;
+		try(Scanner setupScanner = new Scanner(new File(finishedSetup))){
+			
+			// Read from setupConfigFile
+			while(setupScanner.hasNext()) {
+				String line = new String(setupScanner.nextLine());
+				String[] parts = line.split(", ");
+				
+				// Check each line for rooms and spaces
+				if(line.matches("^Room.*$")) {
+					if(parts.length != 3) {
+						String message = "Invalidformat, expecting a name and symbol for each room, bad line: \" " + line + "\".";
+						throw new BadConfigFormatException(message);
+					}
+					
+					String roomName = parts[1].substring(0);
+					Room newRoom = new Room(roomName);				
+					String symbol = parts[2].substring(0);
+					roomMap.put(symbol.charAt(0), newRoom);
+					
+				} else if(line.matches("^Space.*$")) {
+					if(parts.length != 3) {
+						String message = "Invalid format, expecting aname and symbol for each type of space, bad line: \" " + line + "\".";
+						throw new BadConfigFormatException(message);
+					}
+					
+					String spaceName = parts[1].substring(0);
+					String spaceSymbol = parts[2].substring(0);
+					Room newRoom = new Room(spaceName);
+					roomMap.put(spaceSymbol.charAt(0), newRoom);
+					cellMap.put(spaceSymbol.charAt(0), spaceName);
+					
+				} else {
+					continue;
+				}
+			}
+			
+			
+		} catch(FileNotFoundException e){
+			System.out.println("File not found, please try again.");
+		}
+		
 	}
 	
 	
@@ -184,86 +192,103 @@ public class Board {
 	
 	
 	public void loadLayoutConfig() throws BadConfigFormatException {
-	    String finishedLayout = "./data/" + layoutConfigFile;
-	    
-	    try (Scanner test = new Scanner(new File(finishedLayout))) {
-	        ArrayList<String[]> boardLayout = new ArrayList<>();
-	        int numCols = 0;
-	        int numRows = 0;
-	        boolean firstRow = true;
-	        
-	        while (test.hasNext()) {
-	            // Read the next line from the layout file
-	            String line = test.nextLine();
-	            // Split the line into parts using a comma as a delimiter
-	            String[] spaces = line.split(",");
-	            
-	            if (firstRow) {
-	                numCols = spaces.length;
-	                firstRow = false;
-	            } else {
-	                if (numCols != spaces.length) {
-	                    // Check if the number of columns in each row is consistent
+		String finishedLayout = "./data/" + layoutConfigFile;
+		try(Scanner test = new Scanner(new File(finishedLayout))){
+			ArrayList<String[]> boardLayout = new ArrayList<String[]>();
+			int numCols = 0;
+			int numRows = 0;
+			boolean firstRow = true;
+			while(test.hasNext()) {
+				// Read the next line from the layout file
+				String line = new String(test.nextLine());
+				// Split the line into parts using a comma as a delimiter
+				String[] spaces = line.split(",");
+				if(firstRow) { 
+					numCols = spaces.length; 
+					firstRow = false;
+				} else {
+					if(numCols != spaces.length) {
+						
+						// Check if the number of columns in each row is consistent
 	                    String message = "Column mismatch. column numbers aren't correctly counted between rows. Error is on line " + (numRows + 1) + " of " + finishedLayout;
 	                    throw new BadConfigFormatException(message);
-	                }
-	            }
-	            
-	            numRows++;
-	            boardLayout.add(spaces);
-	        }
-
-	        // Set the number of columns and rows based on the layout
-	        this.numColumns = numCols;
-	        this.numRows = numRows;
-	        this.setupBoard();
-	        
-	        for (int i = 0; i < boardLayout.size() - 1; i++) {
-	            for (int j = 0; j < boardLayout.get(i).length - 1; j++) {
-	                String[] arr = boardLayout.get(i);
-	                char cellChar = arr[j].charAt(0);
-
-	                if (roomMap.containsKey(cellChar) && !cellMap.containsKey(cellChar)) {
-	                    // If the cell corresponds to a room, set it as a room
-	                    this.getCell(j, i).setRoom(true);
-	                }
-
-	                if (roomMap.containsKey(cellChar) && arr[j].length() > 1) {
-	                    char cellChar2 = arr[j].charAt(1);
-	                    switch (cellChar2) {
-	                        case '#':
-	                            this.getCell(j, i).isLabel();
-	                            break;
-	                        case '*':
-	                            this.getCell(j, i).isRoomCenter();
-	                            break;
-	                        case '>':
-	                            this.getCell(j, i).setDirection('R');
-	                            break;
-	                        case '<':
-	                            this.getCell(j, i).setDirection('L');
-	                            break;
-	                        case '^':
-	                            this.getCell(j, i).setDirection('U');
-	                            break;
-	                        case 'v':
-	                            this.getCell(j, i).setDirection('D');
-	                            break;
-	                        default:
-	                            // Handle invalid second character in the layout
-	                            String message = "Invalid second character on cell,  Row: " + i + " Column: " + j + " Character: " + cellChar2 + ".";
+					}
+				}
+				
+				numRows++;
+				boardLayout.add(spaces);
+			}
+			
+			this.numColumns = numCols;
+			this.numRows = numRows;
+			this.setupBoard();
+			for(int i = 0; i < boardLayout.size();i++) {
+				for(int j = 0; j < boardLayout.get(i).length; j++) {
+					String[] arr = boardLayout.get(i);
+					if(roomMap.containsKey(arr[j].charAt(0)) && !cellMap.containsKey(arr[j].charAt(0))) {
+						this.getCell(i, j).setRoom(true);
+						
+					}
+					
+					if(roomMap.containsKey(arr[j].charAt(0))) {
+						this.getCell(i, j).setInitial(arr[j].charAt(0));
+						if(arr[j].length() != 1) {
+							switch(arr[j].charAt(1)) {
+							
+							case '<':
+								this.getCell(i, j).setDirection('L');
+								this.getCell(i, j).setDoorway(true);
+								break;
+								
+							case '^':
+								this.getCell(i, j).setDirection('U');
+								this.getCell(i, j).setDoorway(true);
+								break;
+								
+							case '>':
+								this.getCell(i, j).setDirection('R');
+								this.getCell(i, j).setDoorway(true);
+								break;
+								
+							case 'v':
+								this.getCell(i, j).setDirection('D');
+								this.getCell(i, j).setDoorway(true);
+								break;
+								
+							case '*':
+								this.getCell(i, j).setCenter(true);
+								roomMap.get(arr[j].charAt(0)).setCenterCell(this.getCell(i, j));
+								break;
+								
+							case '#':
+								this.getCell(i, j).setLabel(true);
+								roomMap.get(arr[j].charAt(0)).setLabelCell(this.getCell(i, j));
+								break;
+								
+							default:
+								if (roomMap.containsKey(arr[j].charAt(1))) {
+									this.getCell(i, j).setSecretPassage(arr[j].charAt(1));
+									
+									break;
+								}
+								// Handle invalid second character in the layout
+	                            String message = "Invalid second character on cell,  Row: " + i + " Column: " + j + " Character: " + (arr[j].charAt(1)) + ".";
 	                            throw new BadConfigFormatException(message);
-	                    }
-	                } else {
-	                    // Handle cases where the character in the layout is not in the setup
+							}
+						}
+
+					} else {
+						// Handle cases where the character in the layout is not in the setup
 	                    String message = "Character is in our Layout and is not in our Setup  " + arr[j] + " .";
 	                    throw new BadConfigFormatException(message);
-	                }
-	            }
-	        }
-	    } catch (FileNotFoundException e) {
-	        System.out.println("File not found.");
-	    }
+					}
+				}
+			}
+		}
+		
+		catch (FileNotFoundException e){
+			System.out.println("File not found.");
+		}
 	}
 
 
