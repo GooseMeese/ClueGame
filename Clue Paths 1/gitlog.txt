@@ -1,5 +1,27 @@
-I, James Kirk, certify that I participated equitably in the creation of assignment C15A-1, dated 2023.
-I, Wanda Maximoff, certify that I participated equitably in the creation of this assignment C15A-1, dated 2023.
+commit 0caa027fb34cbd5ba8d54d18cec3f40c4419079d
+Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
+Date:   Sun Oct 22 20:17:24 2023 -0600
+
+    Add files via upload
+
+commit 279cf0f508ddaac35abfb5e6f4d263f3de5164b6
+Merge: cfecd3f 910c426
+Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
+Date:   Sun Oct 22 20:15:51 2023 -0600
+
+    Merge branch 'main' of https://github.com/GooseMeese/ClueRepo
+
+commit cfecd3fc4006d1b82a62f9d76aed7151a0b8392e
+Author: WUBBBZZZ <112722551+WUBBBZZZ@users.noreply.github.com>
+Date:   Sun Oct 22 20:14:41 2023 -0600
+
+    added tests
+
+commit 910c426125327cec98d27b1e20b1c3d13fecd93f
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Sun Oct 22 18:26:48 2023 -0600
+
+    Added git log
 
 commit d61531b176b4816b7cfcc985458a40cf76e36c9b
 Author: GooseMeese <ahansen1@mines.edu>
