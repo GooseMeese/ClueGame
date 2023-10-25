@@ -8,6 +8,7 @@ import experiment.TestBoardCell;
 public class BoardCell {
 	private int row, col;
 	private Boolean isRoom, isOccupied, doorway, roomCenter, label;
+	public Boolean isSecretPassage = false;
 	char type, roomInitial;
 	Set<BoardCell> adjList;
 	DoorDirection direction;

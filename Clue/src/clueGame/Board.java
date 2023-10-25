@@ -160,31 +160,92 @@ public class Board {
 	
 	
 	public void makeAdjList() {
-		for(int i = 0;i<numRows;i++) {
-			for(int j = 0;j<numColumns;j++) {
-				if (grid[i][j].isRoom() == false) {
-					if (i > 0){
-						if (grid[i - 1][j].getInitial() == 'W' || grid[i - 1][j].isDoorway() == true) {
-							grid[i][j].addAdjacency(grid[i-1][j]);
-						}					
-					}
-					if (j > 0){
-						if (grid[i][j-1].getInitial() == 'W' || grid[i][j-1].isDoorway() == true) {
-							grid[i][j].addAdjacency(grid[i][j-1]);
+		for(int col = 0;col<numColumns;col++) {
+			for(int row = 0;row<numRows;row++) {
+				//set room's secret passages
+				//For each board cell that is a secret passage
+				//	get its room, and the room connected via secret passage, then set its room's adjRoomCenterThroughSecretPassage to the center of the other room
+				if(grid[col][row].isSecretPassage) {
+					Room thisRoom = roomMap.get(grid[col][row].getInitial()); //this room by initial
+					Room adjacentRoomThroughSP = roomMap.get(grid[col][row].getSecretPassage()); //adjacent room through SP from roomMap
+					thisRoom.setAdjRoomCenterThroughSecretPassage(adjacentRoomThroughSP.getCenterCell()); //give this room the center cell of it's adjacent room's (via SP)
+				}
+				
+				//we only process a cell if it is a walkway or doorway here
+				if(grid[col][row].getInitial() == 'W' || grid[col][row].isDoorway()) {
+					
+					
+					//if doorway connect with room center in direction it points too
+					//also add it to doorwayList of its room
+					if(grid[col][row].isDoorway()) {
+						DoorDirection roomDirection = grid[col][row].getDoorDirection(); //direction of room
+						char adjacentRoomInitial; //char which is key value in roomMap
+						
+						//switch on roomDirection, to get the room adjacent to a door in the appropriate door direction
+						switch(roomDirection) {
+							case UP:
+								adjacentRoomInitial = grid[col][row-1].getInitial(); //set room initial
+								break;
+							case DOWN:
+								adjacentRoomInitial = grid[col][row+1].getInitial();
+								break;
+							case LEFT:
+								adjacentRoomInitial = grid[col-1][row].getInitial();
+								break;
+							case RIGHT:
+								adjacentRoomInitial = grid[col+1][row].getInitial();
+								break;
+						default:
+							adjacentRoomInitial = ' ';
+							System.out.println("ERROR, invalid door direction"); // we should never get here 
+							break;
+						}
+						
+					//if walkway connect to adjacent walkways 
+					if(grid[col][row].getInitial() == 'W') {
+						if (col > 0 && grid[col-1][row].getInitial() == 'W'){
+							grid[col][row].addAdjacency(grid[col-1][row]);
+						}
+						if (row > 0 && grid[col][row-1].getInitial() == 'W'){
+							grid[col][row].addAdjacency(grid[col][row-1]);
+						}
+						if (col < numColumns - 1 && grid[col+1][row].getInitial() == 'W'){
+							grid[col][row].addAdjacency(grid[col+1][row]);
+						}
+						if (row < numColumns - 1 && grid[col][row+1].getInitial() == 'W'){
+							grid[col][row].addAdjacency(grid[col][row+1]);
 						}
 					}
-					if (i < numColumns - 1){
-						if (grid[i + 1][j].getInitial() == 'W' || grid[i + 1][j].isDoorway() == true) {
-							grid[i][j].addAdjacency(grid[i+1][j]);
-						}		
+						
+						Room adjRoom = roomMap.get(adjacentRoomInitial); // Room adjacent to the door, we need to get its center cell
+						adjRoom.addDoorway(grid[col][row]);	//add this doorway to room's doorways set
+						grid[col][row].addAdjacency(adjRoom.getCenterCell()); // Finally add the center cell of the room adjacent to the doorway to the adjacency list of the doorway
 					}
-					if (j < numColumns - 1){
-						if (grid[i][j+1].getInitial() == 'W' || grid[i][j+1].isDoorway() == true) {
-							grid[i][j].addAdjacency(grid[i][j+1]);
-						}		
+				}
+			}
+		}
+		
+		//Second for loop handles room centers
+		//Room centers are handled after walkways and doorways, this is because rooms may have multiple doorways, and they may be added after room centers
+		//	so we store the doorways for each room in the first pass over the board then handle room center adjacency's after
+		for(int col = 0;col<numColumns;col++) {
+			for(int row = 0;row<numRows;row++) {
+				//if room center cell, the cell should be adjacent to the doorway of the room and to any secret passage rooms
+				if(grid[col][row].isRoomCenter()) {
+					char roomInitial =  grid[col][row].getInitial(); //if its a room center it has a room initial, get room initial
+					Room thisRoom = roomMap.get(roomInitial); //get the room that corresponds with room initial from roomMap
+					
+					//for each doorway in the doorways of this room add them to the adjacency list of the room center
+					for(BoardCell door : thisRoom.getDoorways()) {
+						grid[col][row].addAdjacency(door);
 					}
-				}  //from here we need to figure out how to identify doorways to the the cell if it is a room
-				//as well as account for secret passageways
+					
+					//add secret passages
+					if(thisRoom.getAdjRoomCenterThroughSecretPassage() != null) {
+						grid[col][row].addAdjacency(thisRoom.getAdjRoomCenterThroughSecretPassage());
+					}
+					
+				}
 			}
 		}
 	}

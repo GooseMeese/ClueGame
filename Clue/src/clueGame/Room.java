@@ -1,9 +1,13 @@
 package clueGame;
 
+import java.util.*;
+
 public class Room {
 	private String name;
 	private BoardCell centerCell;
 	private BoardCell labelCell;
+	private BoardCell adjRoomCenterThroughSecretPassage;
+	private Set<BoardCell> doorways;
 	
 	public Room(String name) {
 		this.name = name;
@@ -29,6 +33,22 @@ public class Room {
 	}
 	public void setCenterCell(BoardCell centerCell) {
 		this.centerCell = centerCell;
+	}
+
+	public BoardCell getAdjRoomCenterThroughSecretPassage() {
+		return adjRoomCenterThroughSecretPassage;
+	}
+	
+	public void setAdjRoomCenterThroughSecretPassage(BoardCell adjRoomCenterThroughSecretPassage) {
+		this.adjRoomCenterThroughSecretPassage = adjRoomCenterThroughSecretPassage;
+	}
+	
+	public void addDoorway(BoardCell door) {
+		doorways.add(door);
+	}
+
+	public Set<BoardCell> getDoorways() {
+		return doorways;
 	}
 
 
