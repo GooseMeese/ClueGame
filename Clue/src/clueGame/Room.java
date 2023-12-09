@@ -8,9 +8,18 @@ public class Room {
 	private BoardCell labelCell;
 	private BoardCell adjRoomCenterThroughSecretPassage;
 	private Set<BoardCell> doorways;
-	
+
+	//Default constructor
+	public Room() {
+		super();
+		doorways = new HashSet<BoardCell>();
+	}
+
+	//Overloaded constructor takes name and sets it
 	public Room(String name) {
+		super();
 		this.name = name;
+		doorways = new HashSet<BoardCell>();
 	}
 
 	public String getName() {
@@ -38,11 +47,11 @@ public class Room {
 	public BoardCell getAdjRoomCenterThroughSecretPassage() {
 		return adjRoomCenterThroughSecretPassage;
 	}
-	
+
 	public void setAdjRoomCenterThroughSecretPassage(BoardCell adjRoomCenterThroughSecretPassage) {
 		this.adjRoomCenterThroughSecretPassage = adjRoomCenterThroughSecretPassage;
 	}
-	
+
 	public void addDoorway(BoardCell door) {
 		doorways.add(door);
 	}

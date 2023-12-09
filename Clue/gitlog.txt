@@ -1,5 +1,52 @@
-I, Alex Hansen, certify that I participated equitably in the creation of assignment C15A-2, dated 2023.
-I, Michael Hargraves, certify that I participated equitably in the creation of this assignment C15A-2, dated 2023.
+I, Alex Hansen, certify that I participated equitably in the creation of assignment C19A-2, dated 2023.
+
+commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Sun Oct 30 22:54:09 2023 -0600
+
+    changed the way different methods are used to reduce the overall size of the code.
+
+commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Sun Oct 30 22:24:32 2023 -0600
+
+    Moved some methods around to make the code more logical as you read through it
+
+commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Sun Oct 30 22:05:19 2023 -0600
+
+    Changed some setters and getters
+
+commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Sun Oct 30 20:54:47 2023 -0600
+
+    Changed the placement of different variables for more readability
+
+commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Sun Oct 30 20:42:54 2023 -0600
+
+    Restructured our AddAdjList method a bit
+
+commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Sun Oct 30 20:05:01 2023 -0600
+
+    Added spaces to different places for readability
+
+commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Sun Oct 30 19:49:15 2023 -0600
+
+    Refactored some names of variables
+
+commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
+Author: GooseMeese <ahansen1@mines.edu>
+Date:   Sun Oct 30 19:32:31 2023 -0600
+
+    Added comments to uncommented places
 
 commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
 Author: GooseMeese <ahansen1@mines.edu>

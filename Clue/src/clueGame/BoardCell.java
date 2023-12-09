@@ -7,38 +7,40 @@ import experiment.TestBoardCell;
 
 public class BoardCell {
 	private int row, col;
-	private Boolean isRoom, isOccupied, doorway, roomCenter, label;
+	private Boolean isRoom, isOccupied, roomCenter, roomLabel;
 	public Boolean isSecretPassage = false;
-	char type, roomInitial;
+	private char roomInitial;
 	Set<BoardCell> adjList;
-	DoorDirection direction;
+	DoorDirection doorDirection;
 	char secretPassage;
+	
 	// Constructor with row and col inputs
 	public BoardCell(int row, int col) {
 	    super();
 	    this.row = row;
 	    this.col = col;
 	    adjList = new HashSet<BoardCell>();
-	    isRoom = false;
-	    isOccupied = false;
-	    doorway = false;
-	    roomCenter = false;
-	    label = false;
+		this.doorDirection = DoorDirection.NONE;
+		this.isRoom = false;
+	    this.isOccupied = false;
+	    this.roomCenter = false;
+	    this.roomLabel = false;
 	}
 	
-	public void setDirection(char c) {
+	// Sets the direction of a door based off the character given
+	public void setDoorDirection(char c) {
 		switch(c) {
 			case 'U':
-				this.direction = DoorDirection.UP;
+				this.doorDirection = DoorDirection.UP;
 				break;
 			case 'D':
-				this.direction = DoorDirection.DOWN;
+				this.doorDirection = DoorDirection.DOWN;
 				break;
 			case 'L':
-				this.direction = DoorDirection.LEFT;
+				this.doorDirection = DoorDirection.LEFT;
 				break;
 			case 'R':
-				this.direction = DoorDirection.RIGHT;
+				this.doorDirection = DoorDirection.RIGHT;
 				break;
 		}
 		return;
@@ -48,6 +50,7 @@ public class BoardCell {
 	public void addAdjacency(BoardCell grid) {
 	    this.adjList.add(grid);
 	}
+	
 	// Returns the adjacency list for the cell
 	public Set<BoardCell> getAdjList(){
 		return adjList;
@@ -73,36 +76,42 @@ public class BoardCell {
 		return isOccupied;
 	}
 	
-	public void setCenter(boolean x) {
-		this.roomCenter = x;
+	public void setCenter() {
+		roomCenter = true;
+		return;
 	}
 	
-	public void setLabel(boolean x) {
-		this.label = x;
+	public void setLabel() {
+		roomLabel = true;
 	}
 	
-	public void setDoorway(boolean x) {
-		this.doorway = x;
-	}
 	
 	public boolean isRoomCenter() {
 		return roomCenter;
 	}
 	
 	public boolean isDoorway() {
-		return doorway;
+		if(doorDirection != DoorDirection.NONE) {
+			return true;
+		}
+		return false;
 	}
 	
 	public DoorDirection getDoorDirection() {
-		return this.direction;
+		return this.doorDirection;
 	}
 	
 	public boolean isLabel() {
-		return label;
+		return roomLabel;
 	}
 	
 	public char getSecretPassage() {
 		return secretPassage;
+	}
+	
+	public void setSecretPassage(char room) {
+		this.isSecretPassage = true;
+		this.secretPassage = room;
 	}
 	
 	public char getInitial() {
@@ -112,7 +121,5 @@ public class BoardCell {
 	public void setInitial(char character) {
 		this.roomInitial = character;
 	}
-	public void setSecretPassage(char s) {
-		this.secretPassage = s;
-	}
+	
 }

@@ -1,1 +1,1 @@
-Character is in our Layout and is not in our Setup  Y .
+Error bad config format, please fix and try again, if problem continues please send us your logfile
