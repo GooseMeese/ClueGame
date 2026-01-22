@@ -1,52 +1,60 @@
-I, Alex Hansen, certify that I participated equitably in the creation of assignment C19A-2, dated 2023.
+I, Alex Hansen, certify that I participated equitably in the creation of this assignment C16A, dated 2023.
 
-commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
+commit 46a092f222e4e610cbbc312af94c0ded58723e8b
 Author: GooseMeese <ahansen1@mines.edu>
-Date:   Sun Oct 30 22:54:09 2023 -0600
+Date:   Fri Dec 8 21:23:38 2023 -0700
 
-    changed the way different methods are used to reduce the overall size of the code.
+    Fixed the last error
 
-commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
+commit e5e94d9fd58bcb99fa838f565a4c3c84565da9a1
 Author: GooseMeese <ahansen1@mines.edu>
-Date:   Sun Oct 30 22:24:32 2023 -0600
+Date:   Fri Dec 8 20:41:38 2023 -0700
 
-    Moved some methods around to make the code more logical as you read through it
+    Refactored some code
 
-commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
+commit 732643145727f05cf70de4f4ccad2a22d1fc71fb
 Author: GooseMeese <ahansen1@mines.edu>
-Date:   Sun Oct 30 22:05:19 2023 -0600
+Date:   Wed Oct 25 14:19:23 2023 -0600
 
-    Changed some setters and getters
+    worked on makeAdjList method. Almost done,, getting an out of bounds error
 
-commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
+commit 78f4180b675f552e4dd508b0253b657be90cfa0d
 Author: GooseMeese <ahansen1@mines.edu>
-Date:   Sun Oct 30 20:54:47 2023 -0600
+Date:   Wed Oct 25 12:54:27 2023 -0600
 
-    Changed the placement of different variables for more readability
+    changed name to "Clue"
 
-commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
+commit 7ffbdc9c6f5b9ce86c064699e0bc39938efdbf4f
+Merge: 9aef746 1c5bb7a
+Author: Alexander Hansen <ahansen1@mines.edu>
+Date:   Sun Oct 22 21:39:03 2023 -0600
+
+    Merge branch 'main' of https://github.com/GooseMeese/ClueRepo
+
+commit 9aef74698f7133346fde145743bc1c8aad91366b
+Author: Alexander Hansen <ahansen1@mines.edu>
+Date:   Sun Oct 22 21:39:00 2023 -0600
+
+    Moved some files
+
+commit 1c5bb7a0dbfc273a357c10ee3426c980526a47b0
 Author: GooseMeese <ahansen1@mines.edu>
-Date:   Sun Oct 30 20:42:54 2023 -0600
+Date:   Sun Oct 22 21:36:25 2023 -0600
 
-    Restructured our AddAdjList method a bit
+    updated git log
 
-commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
-Author: GooseMeese <ahansen1@mines.edu>
-Date:   Sun Oct 30 20:05:01 2023 -0600
+commit f97ebe0066e121cbe361f2df845b6e286ae8bbf3
+Merge: 8fe358a cd0624b
+Author: Alexander Hansen <ahansen1@mines.edu>
+Date:   Sun Oct 22 21:35:59 2023 -0600
 
-    Added spaces to different places for readability
+    Merge branch 'main' of https://github.com/GooseMeese/ClueRepo
 
-commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
-Author: GooseMeese <ahansen1@mines.edu>
-Date:   Sun Oct 30 19:49:15 2023 -0600
+commit 8fe358a3b7b2ea3130df960cb3c8a32789e691cf
+Author: Alexander Hansen <ahansen1@mines.edu>
+Date:   Sun Oct 22 21:35:57 2023 -0600
 
-    Refactored some names of variables
-
-commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
-Author: GooseMeese <ahansen1@mines.edu>
-Date:   Sun Oct 30 19:32:31 2023 -0600
-
-    Added comments to uncommented places
+    updated excel sheet
 
 commit cd0624b536bd6a3a14f870bb0593ea926ea0d135
 Author: GooseMeese <ahansen1@mines.edu>
